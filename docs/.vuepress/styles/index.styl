@@ -1,0 +1,74 @@
+@import "domc.styl"
+
+.demo-content {
+    .demo_tables > div > div > div:nth-of-type(2) > .el-table__header,
+    .demo_tables > div > div > div:nth-of-type(3) > .el-table__body {
+        margin: 0px !important;
+    }
+
+    .demo_tables > div > div > div:nth-of-type(3) > .el-table__body th,
+    .demo_tables > div > div > div:nth-of-type(3) > .el-table__body td {
+        border-left: none;
+        border-top: none;
+    }
+    .demo_tables > div > div > div:nth-of-type(2) > .el-table__header th,
+    .demo_tables > div > div > div:nth-of-type(2) > .el-table__header td {
+        border-left: none;
+        border-top: none;
+    }
+}
+th, td {
+  border:none
+}
+tr:nth-child(2n){
+  background-color: white
+}
+.theme-default-content:not(.custom) {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 2.5rem;
+}
+table{
+  margin: 0;
+}
+.search-box input{
+  border-radius:4px !important;
+}
+
+.nav-item > a:not(.external):hover, .nav-item > a:not(.external).router-link-active{
+  border-bottom: 2px solid #0172FC !important;
+  color:#0172FC;
+  height:100%
+}
+.navbar{
+padding:0 !important;
+line-height:32px !important;
+}
+.navbar > .home-link{
+  padding: 0.7rem 1.5rem;
+  line-height: 2.2rem;
+}
+.navbar > .links > .nav-links,.navbar > .links > .nav-links>.nav-item{
+height: 40px;
+}
+.vssue-new-comment-body,.vssue-status,.vssue-header,.vssue-button {
+  display:none
+}
+.vssue-comment-avatar {
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+}
+.vssue-button-login {
+  display:inline-block
+}
+.vssue .vssue-new-comment .vssue-new-comment-footer{
+  margin-left:0px !important
+}
+.vssue .vssue-new-comment .vssue-new-comment-footer .vssue-current-user {
+  font-size: 16px !important;
+  color: #2c3e50 !important;
+}
+table {
+  display: inline-table;
+}

@@ -1,0 +1,12 @@
+node_modules/
+docs
+build
+config
+core
+dist
+src/examples
+src/icons
+src/router
+src/App.vue
+src/main.js
+static/libs

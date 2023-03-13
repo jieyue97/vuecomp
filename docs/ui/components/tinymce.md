@@ -1,0 +1,73 @@
+# 线上word编辑组件 gd-tinymce
+
+-- word简单在线查看与编辑组件，可复制粘贴外部图片。
+
+### 基本用法
+
+-- 基本的tinyMCE的主参数（可去官网查看），拥有部分word功能，仅限word文档在线编辑
+
+```js
+
+/*
+基础用法
+<template>
+  <div>
+    <gdTinyMCE ref="gdTinyMCE" @keyupEditor="keyupEditor" @setUploadImg="setUploadImg" :isSetSelf="isSetSelf" :customEdite='customEdite'></gdTinyMCE>
+  </div>
+</template>
+*/
+
+import tinymce from 'gd_vue_components/src/components_others/gd_tinymce/tinymce' // 引入 tinymce
+export default {
+  name:"gd_tinyMCE",
+  data() {
+      return {
+        isSetSelf: true,
+        imgUploadUrl: '',
+        customEdite: '' // 根据后台传回来的<html></html>进行设值。如果没值则显示初始值
+      }
+    },
+    components: {gdTinyMCE},
+    computed: {
+    },
+    methods: {
+      // 键盘按键弹起操作，可实现在线实时保存
+      keyupEditor(params) {
+        console.log(params);
+      },
+      // 上传图片返后路由
+      setUploadImg(file, type, isChrome, index) {
+        const that = this
+        let formData = new FormData();
+        formData.append('file', file);
+        formData.append('isAddFileName', 'Y');
+        formData.append('objectName', 'sys-plat');
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://10.3.1.87:7001/sys-system/minio/upload');
+        xhr.setRequestHeader('Token-Auth', 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiLnrqHnkIblkZgiLCJyb2xlX2NvZGUiOiJhZG1pbmlzdHJhdG9yIiwiYXZhdGFyIjoiaHR0cDovLzEwLjMuMS42MDo5MDAwL2d1b2RpL3N5cy1wbGF0L2JiLnBuZyIsImF1dGhvcml0aWVzIjpbImFkbWluaXN0cmF0b3IiXSwiY2xpZW50X2lkIjoic2FiZXIiLCJyb2xlX25hbWUiOiJhZG1pbmlzdHJhdG9yIiwibGljZW5zZSI6IlBvd2VyZWQgQnkgR3VvRGkiLCJwb3N0X2lkIjoiIiwidXNlcl9pZCI6IjExMjM1OTg4MjE3Mzg2NzUyMDEiLCJyb2xlX2lkIjoiMTEyMzU5ODgxNjczODY3NTIwMSIsInNjb3BlIjpbImFsbCJdLCJvYXV0aF9pZCI6IiIsImRlcHRfaWQiOiIxNDU4MzU3MDIyNTM4MjAzMTM4IiwidW5pdF9pZCI6IjEzNjUyMjY3MjgyMTkyMTM4MjUiLCJqdGkiOiJhMTQ0ZjgwMS1jOWFhLTQ2MjUtYjY3Zi0xMTVhOTRlM2EyNGEiLCJhY2NvdW50IjoiYWRtaW4ifQ.h0fvtlpckejC5i1FHWFv1CvAqbGXTL143AM064C4290')
+        xhr.onload = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              let data = JSON.parse(xhr.responseText)
+              if (isChrome) {
+                setTimeout(() => {
+                  that.setImgSrc(data.data, index)
+                }, 500)
+              }
+            }
+          }
+        };
+        xhr.onerror = function (e) {
+          console.log(xhr.statusText);
+        }
+        xhr.send(formData);
+      },
+      // 设置img src属性的在线图片
+      setImgSrc(data, index) {
+        this.$refs.gdTinyMCE.setImgSrc(data, index)
+      }
+    }
+}
+
+```
+
