@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>流程引擎组件 gd-bpmn | GuoDi在线辅助平台</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/gdui/img/guodi.png">
+    <meta name="description" content="基于Vue + ElementUI 的web项目工程框架，">
+    
+    <link rel="preload" href="/gdui/assets/css/0.styles.9692402e.css" as="style"><link rel="preload" href="/gdui/assets/js/app.d74dec98.js" as="script"><link rel="preload" href="/gdui/assets/js/6.d5b82d8e.js" as="script"><link rel="preload" href="/gdui/assets/js/134.b0085863.js" as="script"><link rel="preload" href="/gdui/assets/js/7.35aa711b.js" as="script">
+    <link rel="stylesheet" href="/gdui/assets/css/0.styles.9692402e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/gdui/" class="home-link router-link-active"><img src="/gdui/img/guodi.png" alt="GuoDi在线辅助平台" class="logo"> <span class="site-name can-hide">GuoDi在线辅助平台</span></a> <div class="links"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="/gdui/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/gdui/ui/components/quickstart.html" class="nav-link">
+  组件一览（UI）
+</a></div><div class="nav-item"><a href="/gdui/ui/echart/detail.html" class="nav-link">
+  图表一览(echart)
+</a></div><div class="nav-item"><a href="/gdui/ui/gojs/base.html" class="nav-link">
+  关系图(link)
+</a></div><div class="nav-item"><a href="/gdui/ui/iconfont.html" class="nav-link">
+  图标一览(UI)
+</a></div><div class="nav-item"><a href="/gdui/guide/build.html" class="nav-link">
+  前端开发指南（UI）
+</a></div><div class="nav-item"><a href="/gdui/javaGuide/IDEA.html" class="nav-link">
+  后端开发指南（UI）
+</a></div><div class="nav-item"><a href="/gdui/standard/note.html" class="nav-link">
+  代码规范（UI）
+</a></div><div class="nav-item"><a href="/gdui/question/index.html" class="nav-link">
+  常见问题
+</a></div><div class="nav-item"><a href="/gdui/changelog.html" class="nav-link">
+  产品发布
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/gdui/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/gdui/ui/components/quickstart.html" class="nav-link">
+  组件一览（UI）
+</a></div><div class="nav-item"><a href="/gdui/ui/echart/detail.html" class="nav-link">
+  图表一览(echart)
+</a></div><div class="nav-item"><a href="/gdui/ui/gojs/base.html" class="nav-link">
+  关系图(link)
+</a></div><div class="nav-item"><a href="/gdui/ui/iconfont.html" class="nav-link">
+  图标一览(UI)
+</a></div><div class="nav-item"><a href="/gdui/guide/build.html" class="nav-link">
+  前端开发指南（UI）
+</a></div><div class="nav-item"><a href="/gdui/javaGuide/IDEA.html" class="nav-link">
+  后端开发指南（UI）
+</a></div><div class="nav-item"><a href="/gdui/standard/note.html" class="nav-link">
+  代码规范（UI）
+</a></div><div class="nav-item"><a href="/gdui/question/index.html" class="nav-link">
+  常见问题
+</a></div><div class="nav-item"><a href="/gdui/changelog.html" class="nav-link">
+  产品发布
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>快速上手</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/gdui/ui/components/quickstart.html" class="sidebar-link">安装以及使用</a></li><li><a href="/gdui/ui/components/addcomp.html" class="sidebar-link">新增组件文档</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>基础组件</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/gdui/ui/components/dialog.html" class="sidebar-link">弹框组件 gd-dialog</a></li><li><a href="/gdui/ui/components/table.html" class="sidebar-link">表格组件 gd-table</a></li><li><a href="/gdui/ui/components/pagination.html" class="sidebar-link">分页组件 gd-pagination</a></li><li><a href="/gdui/ui/components/steps.html" class="sidebar-link">步骤条组件 gd-steps</a></li><li><a href="/gdui/ui/components/customForm.html" class="sidebar-link">自定义表单组件 gd-customForm</a></li><li><a href="/gdui/ui/components/selectTree.html" class="sidebar-link">下拉框树组件 gd-selectTree</a></li><li><a href="/gdui/ui/components/svgIcon.html" class="sidebar-link">svg 和 icon 的组件</a></li><li><a href="/gdui/ui/components/title.html" class="sidebar-link">标题组件 gd-title</a></li><li><a href="/gdui/ui/components/drag.html" class="sidebar-link">拖拽 组件 gd-drag</a></li><li><a href="/gdui/ui/components/slice-upload.html" class="sidebar-link">分片上传组件 gd-slice-upload</a></li><li><a href="/gdui/ui/components/contextmenu.html" class="sidebar-link">右键菜单 组件 gd-contextmenu</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>特殊组件</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/gdui/ui/components/bpmn.html" aria-current="page" class="active sidebar-link">流程引擎组件 gd-bpmn</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/gdui/ui/components/tinymce.html" class="sidebar-link">线上word编辑组件 gd-tinymce</a></li><li><a href="/gdui/ui/components/online-excel.html" class="sidebar-link">智能在线编辑表格 gd-online-excel</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>通用实例</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/gdui/ui/components/searchPage.html" class="sidebar-link">列表增删改查</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="流程引擎组件-gd-bpmn"><a href="#流程引擎组件-gd-bpmn" class="header-anchor">#</a> 流程引擎组件 gd-bpmn</h1> <p>-- 业务流程图由一系列的图形化元素组成。这些元素简化了模型的开发，且业务分析者看上去非常熟悉。这些元素每个都有各自的特性，且与大多数的建模器类似。</p> <h3 id="基本用法"><a href="#基本用法" class="header-anchor">#</a> 基本用法</h3> <p>-- 基本的 xmlStr 传入，可更改节点颜色属性、可保存流程信息、自定义节点属性表单、自定义流程属性表单、下载 xml、下载 SVG 等操作,用法</p> <p><img src="/gdui/img/bpnm-js.png" alt="An image"></p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">/*
+* 展示流程用法。
+* 
+*&lt;template&gt;
+   &lt;div&gt;
+     &lt;gdBpmn :bpmnXmlStr='bpmnXmlStr'&gt;&lt;/gdBpmn&gt;
+   &lt;/div&gt;
+&lt;/template&gt;
+* 
+* data() {
+*    return {
+*       bpmnXmlStr: '
+      &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+        &lt;bpmn2:definitions xmlns:bpmn2=&quot;http://www.omg.org/spec/BPMN/20100524/MODEL&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:bpmndi=&quot;http://www.omg.org/spec/BPMN/20100524/DI&quot; xmlns:dc=&quot;http://www.omg.org/spec/DD/20100524/DC&quot; id=&quot;sample-diagram&quot; targetNamespace=&quot;http://bpmn.io/schema/bpmn&quot; xsi:schemaLocation=&quot;http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd&quot;&gt;
+          &lt;bpmn2:process id=&quot;id&quot; name=&quot;name&quot;&gt;
+            &lt;bpmn2:documentation&gt;documentation&lt;/bpmn2:documentation&gt;
+            &lt;bpmn2:startEvent id=&quot;StartEvent_01ydzqe&quot; /&gt;
+          &lt;/bpmn2:process&gt;
+          &lt;bpmndi:BPMNDiagram id=&quot;BPMNDiagram_1&quot;&gt;
+            &lt;bpmndi:BPMNPlane id=&quot;BPMNPlane_1&quot; bpmnElement=&quot;process1567044459787&quot;&gt;
+              &lt;bpmndi:BPMNShape id=&quot;_BPMNShape_StartEvent_2&quot; bpmnElement=&quot;StartEvent_1&quot;&gt;
+                &lt;dc:Bounds x=&quot;242&quot; y=&quot;212&quot; width=&quot;36&quot; height=&quot;36&quot;/&gt;
+                &lt;bpmndi:BPMNLabel&gt;
+                  &lt;dc:Bounds x=&quot;247&quot; y=&quot;263&quot; width=&quot;25&quot; height=&quot;14&quot;/&gt;
+                &lt;/bpmndi:BPMNLabel&gt;
+              &lt;/bpmndi:BPMNShape&gt;
+            &lt;/bpmndi:BPMNPlane&gt;
+          &lt;/bpmndi:BPMNDiagram&gt;
+        &lt;processType id=&quot;test&quot;/&gt;&lt;/bpmn2:definitions&gt;
+      '
+*    }
+* }
+* */</span>
+
+<span class="token comment">/*
+基础用法
+&lt;template&gt;
+   &lt;div&gt;
+     &lt;gdBpmn @onSave=&quot;onSave&quot;&gt;
+       &lt;template slot=&quot;extendNode&quot; slot-scope=&quot;scope&quot;&gt;
+        &lt;div&gt;
+          &lt;el-form-item label=&quot;流程作者&quot;&gt;
+            &lt;el-input v-model=&quot;scope.row.creater&quot; @input=&quot;onProperties('creater', scope.row.creater)&quot;&gt;&lt;/el-input&gt;
+          &lt;/el-form-item&gt;
+        &lt;/div&gt;
+       &lt;/template&gt;
+       &lt;template slot=&quot;process&quot; slot-scope=&quot;scope&quot;&gt;
+         &lt;div&gt;
+           &lt;el-form-item label=&quot;年龄&quot;&gt;
+              &lt;el-input v-model=&quot;scope.row.age&quot;&gt;&lt;/el-input&gt;
+           &lt;/el-form-item&gt;
+         &lt;/div&gt;
+      &lt;/template&gt;
+     &lt;/gdBpmn&gt;
+   &lt;/div&gt;
+&lt;/template&gt;
+ */</span>
+
+<span class="token keyword">import</span> gdBpmn <span class="token keyword">from</span> <span class="token string">'gd_vue_components/src/components_others/gd_bpmn'</span> <span class="token comment">// 引入 bpmn-js</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'gd-bpmn'</span><span class="token punctuation">,</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span> gdBpmn <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 属性变更传值</span>
+    <span class="token function">onProperties</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">.</span>bpmnDom<span class="token punctuation">.</span><span class="token function">updateProperties</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 保存返回所有数据。</span>
+    <span class="token function">onSave</span><span class="token punctuation">(</span><span class="token parameter">xml<span class="token punctuation">,</span> data<span class="token punctuation">,</span> type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>xml<span class="token punctuation">,</span> data<span class="token punctuation">,</span> type<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 获取流程属性参数</span>
+    <span class="token function">getPanelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">.</span>bpmnDom<span class="token punctuation">.</span><span class="token function">getPanelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br></div></div><p>(<div data-v-110ab9f8><div class="title" style="padding-bottom: 10px" data-v-110ab9f8>
+      属性
+    </div> <div style="margin-bottom: 15px" data-v-110ab9f8></div> <div class="demo_tables" data-v-110ab9f8><gd-table header-cell-style="[object Object]" columns="[object Object],[object Object],[object Object],[object Object],[object Object]" data="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]" border="true" data-v-110ab9f8></gd-table></div><div class="title" style="padding-bottom: 10px" data-v-110ab9f8>
+      插槽
+    </div> <div style="margin-bottom: 15px" data-v-110ab9f8></div> <div class="demo_tables" data-v-110ab9f8><gd-table header-cell-style="[object Object]" columns="[object Object],[object Object],[object Object],[object Object],[object Object]" data="[object Object],[object Object]" border="true" data-v-110ab9f8></gd-table></div><div class="title" style="padding-bottom: 10px" data-v-110ab9f8>
+      事件
+    </div> <div style="margin-bottom: 15px" data-v-110ab9f8></div> <div class="demo_tables" data-v-110ab9f8><gd-table header-cell-style="[object Object]" columns="[object Object],[object Object],[object Object],[object Object],[object Object]" data="[object Object],[object Object],[object Object],[object Object],[object Object]" border="true" data-v-110ab9f8></gd-table></div></div>)</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/gdui/ui/components/contextmenu.html" class="prev">
+        右键菜单 组件 gd-contextmenu
+      </a></span> <span class="next"><a href="/gdui/ui/components/tinymce.html">
+        线上word编辑组件 gd-tinymce
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/gdui/assets/js/app.d74dec98.js" defer></script><script src="/gdui/assets/js/6.d5b82d8e.js" defer></script><script src="/gdui/assets/js/134.b0085863.js" defer></script><script src="/gdui/assets/js/7.35aa711b.js" defer></script>
+  </body>
+</html>

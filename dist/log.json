@@ -1,0 +1,1438 @@
+{
+  "system": [
+    {
+      "title": "稳定版: 4.0.2",
+      "time": "2022-02-16",
+      "content": [
+        {
+          "title": "新特性",
+          "key": "character",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "title": "4.0.2前后端升级一定要看升级手册,前端有个config.js文件需要增加字段配置 'VUE_APP_PREVIEW_URL',避免各种诡异的报错"
+            },
+            {
+              "title": "1、【新功能】新增附件删除、部门树及用户、用户查询Feign API接口  "
+            },
+            {
+              "title": "2、【新功能】新增Minio分片上传、断点续传功能及存储文件相对路径 "
+            },
+            {
+              "title": "3、【新功能】新增gd-slice-upload分片上传组件"
+            },
+            {
+              "title": "4、【新功能】Token增加行政区划编码、区划名称、岗位、部门名称信息"
+            },
+            {
+              "title": "5、【新功能】增加用户ID、部门ID、行政区划编码翻译功能"
+            },
+            {
+              "title": "6、【新功能】新增支持单个业务应用直接查看接口文档"
+            },
+            {
+              "title": "7、【新功能】新增用户在线导入数据功能"
+            },
+            {
+              "title": "8、【新功能】新增机构在线导入数据功能"
+            },
+            {
+              "title": "9、【功能优化】兼容应用内外网部署附件下载、预览"
+            },
+            {
+              "title": "10、【功能优化】优化用户管理根据搜索条件查询子部门的用户"
+            },
+            {
+              "title": "11、【功能优化】优化部门详情查询接口关联部门负责人信息"
+            },
+            {
+              "title": "12、【功能优化】优化用户密码修改前端进行加密传输"
+            },
+            {
+              "title": "13、【功能优化】优化机构部门增加行政区划修改"
+            },
+            {
+              "title": "14、【BUG修复】修复RedisBuffer多对多关系逆向刷新问题"
+            },
+            {
+              "title": "15、【BUG修复】修复删除用户成功，Redis缓存未同步刷新问题"
+            },
+            {
+              "title": " 16、【BUG修复】修复字典类型编码修改，字典项未同步修改字典类型编码问题"
+            },
+            {
+              "title": "  17、【BUG修复】修复角色菜单授权中，授权失败问题"
+            },
+            {
+              "title": "18、【BUG修复】修复修改字典类型、字典项时，提示字典类型在封存中，不能修改问题"
+            },
+            {
+              "title": "19、【BUG修复】修复多角色API接口鉴权失败问题"
+            }
+          ]
+        },
+        {
+          "title": "前端下载",
+          "key": "front",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "纯净版Git地址",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/system/tree/4.0.2.RELEASE",
+              "remark": "子工程只包含基础运维,前端业务工程模板"
+            }
+          ]
+        },
+        {
+          "title": "后端下载",
+          "key": "back",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "基础运维",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "网关服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-gateway-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-gateway-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "鉴权服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-auth-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-auth-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "运维服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-system-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-system-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "nacos配置文件",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/GdSys4.0.2Release%20nacos_config.zip",
+                  "remark": "GdSys4.0.2Release nacos_config.zip"
+                },
+                {
+                  "title": "PostgreSQL-数据库",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/PostgreSQL-init-db-4.0.2.RELEASE.sql",
+                  "remark": "PostgreSQL-init-db-4.0.2.RELEASE.sql"
+                }
+              ]
+            },
+            {
+              "bigTitle": "业务工程模板",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "纯净版Git地址",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/platpro/tree/4.0.2.RELEASE",
+                  "remark": "只包括后端工程模板"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "文档下载",
+          "key": "doc",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "4.0.2.RELEASE版本升级操作指引",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B44.0.2.RELEASE%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7%E6%93%8D%E4%BD%9C%E6%8C%87%E5%BC%95.doc",
+              "remark": "文档跳转"
+            },
+            {
+              "bigTitle": "",
+              "title": "基础运维平台操作手册",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B44.0.1.Release%E5%B9%B3%E5%8F%B0%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docm",
+              "remark": "文档跳转"
+            },
+            {
+              "title": "基础运维开发运维手册",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.0Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%E8%BF%90%E7%BB%B4%E6%89%8B%E5%86%8C.doc",
+              "bigTitle": "",
+              "remark": "文档跳转"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "稳定版: 4.0.1",
+      "time": "2021-12-10",
+      "content": [
+        {
+          "title": "新特性",
+          "key": "character",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "title": "1、基础运维内存查询的微服务接口开放；"
+            },
+            {
+              "title": "2、新增token续期时间可配置功能（默认一个小时）(nacos配置) ； "
+            },
+            {
+              "title": "3、字典查询去掉按单位过滤；"
+            },
+            {
+              "title": "4、后台API访问安全控制实现（新增API管理菜单、API授权菜单）；"
+            },
+            {
+              "title": "5、新增行政区划根据父区划编码查询返回所有子节点树API；"
+            },
+            {
+              "title": "6、新增逻辑删除主表数据同时物理删除关联关系表数据；"
+            }
+          ]
+        },
+        {
+          "title": "前端下载",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "纯净版Git地址",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/system/tree/4.0.1.RELEASE",
+              "remark": "子工程只包含基础运维,前端业务工程模板"
+            }
+          ]
+        },
+        {
+          "title": "后端下载",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "基础运维",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "网关服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/gd-sys-gateway-4.0.1.RELEASE.jar",
+                  "remark": "gd-sys-gateway-4.0.1.RELEASE.jar"
+                },
+                {
+                  "title": "鉴权服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/gd-sys-auth-4.0.1.RELEASE.jar",
+                  "remark": "gd-sys-auth-4.0.1.RELEASE.jar"
+                },
+                {
+                  "title": "运维服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/gd-sys-system-4.0.1.RELEASE.jar",
+                  "remark": "gd-sys-system-4.0.1.RELEASE.jar"
+                },
+                {
+                  "title": "nacos配置文件",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/GdSys4.0.1Release%20nacos_config.zip",
+                  "remark": "GdSys4.0.1Release nacos_config.zip"
+                },
+                {
+                  "title": "PostgreSQL-数据库",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/db-init-4.0.1.RELEASE.sql",
+                  "remark": "db-init-4.0.1.RELEASE.sql"
+                }
+              ]
+            },
+            {
+              "bigTitle": "业务工程模板",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "纯净版Git地址",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/platpro/tree/4.0.1.RELEASE",
+                  "remark": "只包括后端工程模板"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "文档下载",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "基础运维平台操作手册",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B44.0.1.Release%E5%B9%B3%E5%8F%B0%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docm",
+              "remark": "文档跳转"
+            },
+            {
+              "title": "基础运维开发运维手册",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.0Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%E8%BF%90%E7%BB%B4%E6%89%8B%E5%86%8C.doc",
+              "bigTitle": "",
+              "remark": "文档跳转"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "稳定版: 4.0.0",
+      "time": "2021-11-30",
+      "content": [
+        {
+          "title": "新特性",
+          "key": "character",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "title": "1、基础运维前后端代码自主研发；"
+            },
+            {
+              "title": "2、基于Redis的零编码高性能热数据加载、访问插件（完全自主设计研发）；"
+            },
+            {
+              "title": "......"
+            }
+          ]
+        },
+        {
+          "title": "前端下载",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "纯净版Git地址",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sys-ui/tree/4.0.0.RELEASE",
+              "remark": "子工程只包含基础运维,前端业务工程模板"
+            }
+          ]
+        },
+        {
+          "title": "后端下载",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "基础运维",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "网关服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.0Release/gd-sys-gateway-4.0.0.RELEASE.jar",
+                  "remark": "gd-sys-gateway-4.0.0.RELEASE.jar"
+                },
+                {
+                  "title": "鉴权服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.0Release/gd-sys-auth-4.0.0.RELEASE.jar",
+                  "remark": "gd-sys-auth-4.0.0.RELEASE.jar"
+                },
+                {
+                  "title": "运维服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.0Release/gd-sys-system-4.0.0.RELEASE.jar",
+                  "remark": "gd-sys-system-4.0.0.RELEASE.jar"
+                },
+                {
+                  "title": "nacos配置文件",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.0Release/GdSys4.0.0Release%20nacos_config.zip",
+                  "remark": "GdSys4.0.0Release nacos_config.zip"
+                },
+                {
+                  "title": "PostgreSQL-数据库",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.0Release/upms_gd.sql",
+                  "remark": "upms_gd.sql"
+                }
+              ]
+            },
+            {
+              "bigTitle": "业务工程模板",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "纯净版Git地址",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/platpro/tree/4.0.0.RELEASE",
+                  "remark": "只包括后端工程模板"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "文档下载",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "基础运维平台",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.0Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docm",
+              "remark": "基础运维平台操作手册"
+            },
+            {
+              "title": "基础运维平台",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.0Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%E8%BF%90%E7%BB%B4%E6%89%8B%E5%86%8C.doc",
+              "bigTitle": "",
+              "remark": "基础运维开发运维手册"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "wfmng": [
+    {
+      "title": "基础版: 1.1.1",
+      "time": "2022-07-29",
+      "content": [
+        {
+          "title": "说明",
+          "key": "desc",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "title": "如果是首次使用1.1.1.RELEASE,直接执行bpm-1.1.1-pg-full.sql"
+            }
+          ]
+        },
+        {
+          "title": "新特性",
+          "key": "character",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "title": "【新功能】1.支持在线VUE表单快速生成查询列表及生成菜单"
+            },
+            {
+              "title": "【新功能】2.增加批量操作流程日志api"
+            },
+            {
+              "title": "【修复】3.修复已知错误错误问题"
+            }
+          ]
+        },
+        {
+          "title": "前端框架初始化指令",
+          "key": "front",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "title": "先执行：npm i gd-updata@1.6.8 -g"
+            },
+            {
+              "title": "再执行：gd-updata init"
+            },
+            {
+              "title": "功能是先拉取纯净版的代码，然后执行依赖包安装，然后拉取子系统，最后运行系统（执行指令前请确保拥有各个子系统的权限）"
+            }
+          ]
+        },
+        {
+          "title": "前端框架升级指令",
+          "key": "front",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "title": "先执行：npm i gd-updata@1.6.8 -g（如果已经安装过这个版本可以跳过这步）"
+            },
+            {
+              "title": "再执行：gd-updata update"
+            },
+            {
+              "title": "功能是新增或者覆盖相应的升级文件，以及切换到最新的tag（执行指令前请确保拥有各个子系统的权限，更新前请确保没有待提交的代码）"
+            }
+          ]
+        },
+        {
+          "title": "前端下载",
+          "key": "front",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "纯净版Git地址",
+              "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/flowengine/newversion/source/gdbpm.git",
+              "remark": "子工程只包含基础运维,前端业务工程模板"
+            },
+            {
+              "title": "工作流增强版Git地址",
+              "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/flowengine/newversion/source/gdbpm/tree/1.1.0.RELEASE",
+              "bigTitle": "",
+              "remark": "子工程只包含基础运维,工作流平台,前端业务工程模板"
+            }
+          ]
+        },
+        {
+          "title": "后端下载",
+          "key": "back",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "基础运维",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "网关服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-gateway-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-gateway-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "鉴权服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-auth-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-auth-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "运维服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-system-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-system-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "nacos配置文件",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/GdSys4.0.2Release%20nacos_config.zip",
+                  "remark": "GdSys4.0.2Release nacos_config.zip"
+                },
+                {
+                  "title": "PostgreSQL-数据库",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/PostgreSQL-init-db-4.0.2.RELEASE.sql",
+                  "remark": "PostgreSQL-init-db-4.0.2.RELEASE.sql"
+                }
+              ]
+            },
+            {
+              "bigTitle": "流程定制平台",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "工作流菜单数据脚本",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/bpm_menu(%E5%B7%A5%E4%BD%9C%E6%B5%81%E8%8F%9C%E5%8D%95%E6%95%B0%E6%8D%AE).sql",
+                  "remark": "bpm_menu.sql"
+                },
+                {
+                  "title": "数据库更新语句脚本",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.1.RELEASE/dbupdate.md",
+                  "remark": "dbupdate.md"
+                },
+                {
+                  "title": "BPM工作流1.1.1版本更新说明文档",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.1.RELEASE/bpm%E5%B7%A5%E4%BD%9C%E6%B5%811.1.1%E6%9B%B4%E6%96%B0%E4%BF%AE%E5%A4%8D%E8%AF%B4%E6%98%8E.md",
+                  "remark": "版本更新说明"
+                },
+                {
+                  "title": "nacos配置文件",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.1.RELEASE/gdbpm_nacos_config.zip",
+                  "remark": "gdbpm_nacos_config.zip"
+                },
+                {
+                  "title": "流程平台服务",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.1.RELEASE/bpm-service-1.1.1.RELEASE.jar",
+                  "remark": "bpm-service-1.1.1.RELEASE.jar"
+                },
+                {
+                  "title": "PostgresSQL-数据库全量脚本",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.1.RELEASE/bpm-1.1.1-pg-full.sql",
+                  "remark": "bpm-1.1.1-pg-full.sql"
+                }
+              ]
+            },
+            {
+              "bigTitle": "业务工程模板",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "纯净版Git地址",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/platpro/tree/4.0.2.RELEASE",
+                  "remark": "只包括后端工程模板"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "文档下载",
+          "key": "doc",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "工作流平台用户操作手册",
+              "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B9%B3%E5%8F%B0%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docx",
+              "remark": "文档跳转"
+            },
+            {
+              "bigTitle": "",
+              "title": "BPM工作流基础版数据库说明文档V1",
+              "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/BPM%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%9F%BA%E7%A1%80%E7%89%88%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3V1.doc",
+              "remark": "文档跳转"
+            },
+            {
+              "bigTitle": "",
+              "title": "清理审批定制菜单数据sql",
+              "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/%E6%B8%85%E7%90%86%E5%AE%A1%E6%89%B9%E5%AE%9A%E5%88%B6%E8%8F%9C%E5%8D%95%E6%95%B0%E6%8D%AEsql.md",
+              "remark": "清理审批定制菜单数据sql"
+            },
+            {
+              "bigTitle": "",
+              "title": " 清理旧字典项数据sql",
+              "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/%E6%B8%85%E7%90%86%E6%97%A7%E5%AD%97%E5%85%B8%E9%A1%B9%E6%95%B0%E6%8D%AEsql.md",
+              "remark": " 清理旧字典项数据sql"
+            },
+            {
+              "bigTitle": "",
+              "title": "bpm_menu(工作流菜单数据)",
+              "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/bpm_menu(%E5%B7%A5%E4%BD%9C%E6%B5%81%E8%8F%9C%E5%8D%95%E6%95%B0%E6%8D%AE).sql",
+              "remark": "bpm_menu(工作流菜单数据)"
+            },
+            {
+              "bigTitle": "",
+              "title": "sys_dict_type(工作流字典类型数据)",
+              "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/sys_dict_type.sql",
+              "remark": "sys_dict_type(工作流字典类型数据)"
+            },
+            {
+              "bigTitle": "",
+              "title": "sys_dict(工作流字典项数据)",
+              "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/sys_dict.sql",
+              "remark": "sys_dict(工作流字典项数据)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "基础版: 1.1.0",
+      "time": "2022-05-17",
+      "content": [
+        {
+          "title": "说明",
+          "key": "desc",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "title": "1、如果是首次使用1.1.0.RELEASE,直接执行bpm1.1.0.RELEASE-pg-full.sql"
+            },
+            {
+              "title": "2、不支持从旧版本升级到该版本!!!"
+            }
+          ]
+        },
+        {
+          "title": "新特性",
+          "key": "character",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "title": "1、【新功能】支持表单数据分表储存"
+            },
+            {
+              "title": "2、【新功能】支持从物理表反向生成实体,并支持表单关联自定义实体"
+            },
+            {
+              "title": "3、【新功能】支持材料树模板功能及方案导入材料树模板配置"
+            },
+            {
+              "title": "4、【新功能】支持kkFile文件预览"
+            },
+            {
+              "title": "5、【新功能】优化方案配置与表单管理界面UI"
+            },
+            {
+              "title": "6、【新功能】移除大部分旧版控件,新增VUE控件引用在线表单"
+            },
+            {
+              "title": "7、【新功能】新增打印模板管理模块功能(支持上传jasper打印文件与在线新增word打印模板)"
+            },
+            {
+              "title": "8、【新功能】新增抄送功能及待阅列表菜单"
+            },
+            {
+              "title": "9、【新功能】更新swagger接口说明"
+            }
+          ]
+        },
+        {
+          "title": "前端下载",
+          "key": "front",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "纯净版Git地址",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/system/tree/4.0.2.RELEASE",
+              "remark": "子工程只包含基础运维,前端业务工程模板"
+            },
+            {
+              "title": "工作流增强版Git地址",
+              "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/flowengine/newversion/source/gdbpm/tree/1.1.0.RELEASE",
+              "bigTitle": "",
+              "remark": "子工程只包含基础运维,工作流平台,前端业务工程模板"
+            }
+          ]
+        },
+        {
+          "title": "后端下载",
+          "key": "back",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "基础运维",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "网关服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-gateway-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-gateway-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "鉴权服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-auth-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-auth-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "运维服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-system-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-system-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "nacos配置文件",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/GdSys4.0.2Release%20nacos_config.zip",
+                  "remark": "GdSys4.0.2Release nacos_config.zip"
+                },
+                {
+                  "title": "PostgreSQL-数据库",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/PostgreSQL-init-db-4.0.2.RELEASE.sql",
+                  "remark": "PostgreSQL-init-db-4.0.2.RELEASE.sql"
+                }
+              ]
+            },
+            {
+              "bigTitle": "流程定制平台",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "工作流菜单数据脚本",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/bpm_menu(%E5%B7%A5%E4%BD%9C%E6%B5%81%E8%8F%9C%E5%8D%95%E6%95%B0%E6%8D%AE).sql",
+                  "remark": "bpm_menu.sql"
+                },
+                {
+                  "title": "数据库更新语句脚本",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/dbupdate.md",
+                  "remark": "dbupdate.md"
+                },
+                {
+                  "title": "Oracle数据库全量脚本(包含基础运维数据表)",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/gdbpm-oracle-full(%E5%8C%85%E5%90%AB%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B4%E6%95%B0%E6%8D%AE%E8%A1%A8).dmp",
+                  "remark": "gdbpm-oracle-full.dmp"
+                },
+                {
+                  "title": "BPM工作流1.1.0基础版版本更新说明文档",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/bpm%E5%B7%A5%E4%BD%9C%E6%B5%811.1.0%E6%9B%B4%E6%96%B0%E4%BF%AE%E5%A4%8D%E8%AF%B4%E6%98%8E.md",
+                  "remark": "版本更新说明"
+                },
+                {
+                  "title": "nacos配置文件",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/gdbpm_nacos_config.zip",
+                  "remark": "gdbpm_nacos_config.zip"
+                },
+                {
+                  "title": "流程平台服务",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/bpm-service-1.1.0.RELEASE.jar",
+                  "remark": "bpm-service-1.1.0.RELEASE.jar"
+                },
+                {
+                  "title": "PostgresSQL-数据库全量脚本",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/bpm-1.1.0-pg-full.sql",
+                  "remark": "bpm-1.1.0-pg-full.sql"
+                }
+              ]
+            },
+            {
+              "bigTitle": "业务工程模板",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "纯净版Git地址",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/platpro/tree/4.0.2.RELEASE",
+                  "remark": "只包括后端工程模板"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "文档下载",
+          "key": "doc",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "工作流平台用户操作手册",
+              "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B9%B3%E5%8F%B0%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docx",
+              "remark": "文档跳转"
+            },
+            {
+              "bigTitle": "",
+              "title": "BPM工作流基础版数据库说明文档V1",
+              "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.1.0.RELEASE/BPM%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%9F%BA%E7%A1%80%E7%89%88%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3V1.doc",
+              "remark": "文档跳转"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "工作流: 1.0.2",
+      "time": "2022-03-24",
+      "content": [
+        {
+          "title": "新特性",
+          "key": "character",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "title": "1、【新功能】更正ntko查看文件模式"
+            },
+            {
+              "title": "2、【新功能】在线表单新增控件"
+            },
+            {
+              "title": "3、【新功能】打印支持多模板"
+            },
+            {
+              "title": "4、【新功能】文件树上传数量控制"
+            },
+            {
+              "title": "5、【新功能】通用发送转移到线上更正"
+            },
+            {
+              "title": "6、【新功能】拓展API接口"
+            },
+            {
+              "title": "7、【BUG修复】修复方案导入导出功能"
+            },
+            {
+              "title": "8、【BUG修复】修复方案参数配置获取主表单字段失败问题"
+            },
+            {
+              "title": "9、【BUG修复】修复审批用户-用户来自用户所在部门下负责人返回用户数据失败问题"
+            },
+            {
+              "title": "10、【BUG修复】修复实体管理，元数据表删除导致表单状态错误问题"
+            },
+            {
+              "title": "11、【BUG修复】修复获取材料树数据，文件数据与文件夹对应错误问题"
+            },
+            {
+              "title": "12、【BUG修复】修复发送按钮用户组没有数据问题"
+            }
+          ]
+        },
+        {
+          "title": "前端下载",
+          "key": "front",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "纯净版Git地址",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/system/tree/4.0.2.RELEASE",
+              "remark": "子工程只包含基础运维,前端业务工程模板"
+            },
+            {
+              "title": "工作流增强版Git地址",
+              "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/flowengine/newversion/source/gdbpm/tree/1.0.2.RELEASE",
+              "bigTitle": "",
+              "remark": "子工程只包含基础运维,工作流平台,前端业务工程模板"
+            }
+          ]
+        },
+        {
+          "title": "后端下载",
+          "key": "back",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "基础运维",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "网关服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-gateway-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-gateway-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "鉴权服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-auth-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-auth-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "运维服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-system-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-system-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "nacos配置文件",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/GdSys4.0.2Release%20nacos_config.zip",
+                  "remark": "GdSys4.0.2Release nacos_config.zip"
+                },
+                {
+                  "title": "PostgreSQL-数据库",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/PostgreSQL-init-db-4.0.2.RELEASE.sql",
+                  "remark": "PostgreSQL-init-db-4.0.2.RELEASE.sql"
+                }
+              ]
+            },
+            {
+              "bigTitle": "流程定制平台",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "流程平台服务",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.0.2.RELEASE/bpm-service-1.0.2.RELEASE.jar",
+                  "remark": " bpm-service-1.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "oracle控件管理数据更新语句",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.0.2.RELEASE/BPM_APPROVE_COMP_ORACLE_UPDATE.sql",
+                  "remark": "版本更新说明"
+                },
+                {
+                  "title": "postgres数据库全量执行语句",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.0.2.RELEASE/bpm1.0.2.RELEASE-pg-full.sql",
+                  "remark": "bpm1.0.2.RELEASE-pg-full.sql "
+                },
+                {
+                  "title": "postgres控件管理数据更新语句",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.0.2.RELEASE/bpm_approve_comp_pg_update.sql",
+                  "remark": "bpm_approve_comp_pg_update.sql"
+                },
+                {
+                  "title": "数据库更新执行语句",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.0.2.RELEASE/dbupdate.md",
+                  "remark": "dbupdate.md"
+                },
+                {
+                  "title": "nacos配置文件",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.0.2.RELEASE/gdbpm_nacos_config.zip",
+                  "remark": "gdbpm_nacos_config.zip"
+                },
+                {
+                  "title": "BPM工作流 1.0.2 版本更新说明",
+                  "url": "http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/sysdoc/blob/master/bpm1.0.2.RELEASE/bpm%E5%B7%A5%E4%BD%9C%E6%B5%811.0.2%E6%9B%B4%E6%96%B0%E4%BF%AE%E5%A4%8D%E8%AF%B4%E6%98%8E.md",
+                  "remark": "版本更新说明"
+                }
+              ]
+            },
+            {
+              "bigTitle": "业务工程模板",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "纯净版Git地址",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/platpro/tree/4.0.2.RELEASE",
+                  "remark": "只包括后端工程模板"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "文档下载",
+          "key": "doc",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "4.0.2.RELEASE版本升级操作指引",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B44.0.2.RELEASE%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7%E6%93%8D%E4%BD%9C%E6%8C%87%E5%BC%95.doc",
+              "remark": "文档跳转"
+            },
+            {
+              "bigTitle": "",
+              "title": "基础运维平台操作手册",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B44.0.1.Release%E5%B9%B3%E5%8F%B0%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docm",
+              "remark": "文档跳转"
+            },
+            {
+              "title": "基础运维开发运维手册",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.0Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%E8%BF%90%E7%BB%B4%E6%89%8B%E5%86%8C.doc",
+              "bigTitle": "",
+              "remark": "文档跳转"
+            },
+            {
+              "bigTitle": "",
+              "title": "基础运维工作流平台操作手册",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B9%B3%E5%8F%B0%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docx",
+              "remark": "文档跳转"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "工作流: 1.0.1",
+      "time": "2022-02-16",
+      "content": [
+        {
+          "title": "新特性",
+          "key": "character",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "title": "4.0.2前后端升级一定要看升级手册,前端有个config.js文件需要增加字段配置 'VUE_APP_PREVIEW_URL',避免各种诡异的报错"
+            },
+            {
+              "title": "1、【新功能】新增附件删除、部门树及用户、用户查询Feign API接口  "
+            },
+            {
+              "title": "2、【新功能】新增Minio分片上传、断点续传功能及存储文件相对路径 "
+            },
+            {
+              "title": "3、【新功能】新增gd-slice-upload分片上传组件"
+            },
+            {
+              "title": "4、【新功能】Token增加行政区划编码、区划名称、岗位、部门名称信息"
+            },
+            {
+              "title": "5、【新功能】增加用户ID、部门ID、行政区划编码翻译功能"
+            },
+            {
+              "title": "6、【新功能】新增支持单个业务应用直接查看接口文档"
+            },
+            {
+              "title": "7、【新功能】新增用户在线导入数据功能"
+            },
+            {
+              "title": "8、【新功能】新增机构在线导入数据功能"
+            },
+            {
+              "title": "9、【功能优化】兼容应用内外网部署附件下载、预览"
+            },
+            {
+              "title": "10、【功能优化】优化用户管理根据搜索条件查询子部门的用户"
+            },
+            {
+              "title": "11、【功能优化】优化部门详情查询接口关联部门负责人信息"
+            },
+            {
+              "title": "12、【功能优化】优化用户密码修改前端进行加密传输"
+            },
+            {
+              "title": "13、【功能优化】优化机构部门增加行政区划修改"
+            },
+            {
+              "title": "14、【BUG修复】修复RedisBuffer多对多关系逆向刷新问题"
+            },
+            {
+              "title": "15、【BUG修复】修复删除用户成功，Redis缓存未同步刷新问题"
+            },
+            {
+              "title": " 16、【BUG修复】修复字典类型编码修改，字典项未同步修改字典类型编码问题"
+            },
+            {
+              "title": "  17、【BUG修复】修复角色菜单授权中，授权失败问题"
+            },
+            {
+              "title": "18、【BUG修复】修复修改字典类型、字典项时，提示字典类型在封存中，不能修改问题"
+            },
+            {
+              "title": "19、【BUG修复】修复多角色API接口鉴权失败问题"
+            }
+          ]
+        },
+        {
+          "title": "前端下载",
+          "key": "front",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "纯净版Git地址",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/system/tree/4.0.2.RELEASE",
+              "remark": "子工程只包含基础运维,前端业务工程模板"
+            },
+            {
+              "title": "工作流增强版Git地址",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/gdbpm/tree/1.0.1.RELEASE",
+              "bigTitle": "",
+              "remark": "子工程只包含基础运维,工作流平台,前端业务工程模板"
+            }
+          ]
+        },
+        {
+          "title": "后端下载",
+          "key": "back",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "基础运维",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "网关服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-gateway-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-gateway-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "鉴权服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-auth-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-auth-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "运维服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gd-sys-system-4.0.2.RELEASE.jar",
+                  "remark": "gd-sys-system-4.0.2.RELEASE.jar"
+                },
+                {
+                  "title": "nacos配置文件",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/GdSys4.0.2Release%20nacos_config.zip",
+                  "remark": "GdSys4.0.2Release nacos_config.zip"
+                },
+                {
+                  "title": "PostgreSQL-数据库",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/PostgreSQL-init-db-4.0.2.RELEASE.sql",
+                  "remark": "PostgreSQL-init-db-4.0.2.RELEASE.sql"
+                }
+              ]
+            },
+            {
+              "bigTitle": "流程定制平台",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "BPM工作流 1.0.1 版本更新说明",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.1.RELEASE/bpm%E5%B7%A5%E4%BD%9C%E6%B5%811.0.1%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E.md",
+                  "remark": "版本更新说明"
+                },
+                {
+                  "title": "BPM 1.0.1 数据库语句更新说明",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.1.RELEASE/dbupdate.md",
+                  "remark": "版本更新说明"
+                },
+                {
+                  "title": "BPM 1.0.1 工作流配置项更新说明",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.1.RELEASE/%E9%85%8D%E7%BD%AE%E9%A1%B9%E6%9B%B4%E6%96%B0.md",
+                  "remark": "版本更新说明"
+                },
+                {
+                  "title": "流程平台服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.1.RELEASE/bpm-service-1.0.1.RELEASE.jar",
+                  "remark": "bpm-service-1.0.1.RELEASE.jar"
+                },
+                {
+                  "title": "nacos配置文件",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/gdbpm-1.0.1.zip",
+                  "remark": "gdbpm-1.0.1.zip"
+                },
+                {
+                  "title": "PostgreSQL-数据库",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/pg-gdbpm.sql",
+                  "remark": "pg-gdbpm.sql"
+                },
+                {
+                  "title": "PG数据库函数脚本",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/PG%E6%95%B0%E6%8D%AE%E5%BA%93%E5%87%BD%E6%95%B0%E8%84%9A%E6%9C%AC",
+                  "remark": "PG数据库函数脚本"
+                },
+                {
+                  "title": "PG视图脚本",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/PG%E8%A7%86%E5%9B%BE",
+                  "remark": "PG视图脚本"
+                },
+                {
+                  "title": "Oracle数据库",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/oracle-gdbpm.dmp",
+                  "remark": "oracle-gdbpm.dmp"
+                },
+                {
+                  "title": "Oracle函数脚本",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%87%BD%E6%95%B0%E8%84%9A%E6%9C%AC",
+                  "remark": "Oracle函数脚本"
+                },
+                {
+                  "title": "Oracle视图脚本",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/Oracle%E8%A7%86%E5%9B%BE",
+                  "remark": "Oracle视图脚本"
+                },
+                {
+                  "title": "工作流远程监听配置说明",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/%E8%BF%9C%E7%A8%8B%E7%9B%91%E5%90%AC%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E.md",
+                  "remark": " 远程监听配置说明.md"
+                }
+              ]
+            },
+            {
+              "bigTitle": "业务工程模板",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "纯净版Git地址",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/platpro/tree/4.0.2.RELEASE",
+                  "remark": "只包括后端工程模板"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "文档下载",
+          "key": "doc",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "4.0.2.RELEASE版本升级操作指引",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.2Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B44.0.2.RELEASE%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7%E6%93%8D%E4%BD%9C%E6%8C%87%E5%BC%95.doc",
+              "remark": "文档跳转"
+            },
+            {
+              "bigTitle": "",
+              "title": "基础运维平台操作手册",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B44.0.1.Release%E5%B9%B3%E5%8F%B0%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docm",
+              "remark": "文档跳转"
+            },
+            {
+              "title": "基础运维开发运维手册",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.0Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%E8%BF%90%E7%BB%B4%E6%89%8B%E5%86%8C.doc",
+              "bigTitle": "",
+              "remark": "文档跳转"
+            },
+            {
+              "bigTitle": "",
+              "title": "基础运维工作流平台操作手册",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B9%B3%E5%8F%B0%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docx",
+              "remark": "文档跳转"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "工作流: 1.0.0",
+      "time": "2021-12-10",
+      "content": [
+        {
+          "title": "新特性",
+          "key": "character",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "title": "1、基础运维内存查询的微服务接口开放；"
+            },
+            {
+              "title": "2、新增token续期时间可配置功能（默认一个小时）(nacos配置) ； "
+            },
+            {
+              "title": "3、字典查询去掉按单位过滤；"
+            },
+            {
+              "title": "4、后台API访问安全控制实现（新增API管理菜单、API授权菜单）；"
+            },
+            {
+              "title": "5、新增行政区划根据父区划编码查询返回所有子节点树API；"
+            },
+            {
+              "title": "6、新增逻辑删除主表数据同时物理删除关联关系表数据；"
+            },
+            {
+              "title": "7、基于先进的flowable技术研发的BPM平台；"
+            },
+            {
+              "title": "8、高可配的流程图在线设计、在线校验及在线测试插件；"
+            },
+            {
+              "title": "9、高性能的所见即所得的审批方案配置器。"
+            }
+          ]
+        },
+        {
+          "title": "前端下载",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "纯净版Git地址",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/system/tree/4.0.1.RELEASE",
+              "remark": "子工程只包含基础运维,前端业务工程模板"
+            },
+            {
+              "title": "工作流增强版Git地址",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/gdbpm/tree/1.0.0.RELEASE",
+              "bigTitle": "",
+              "remark": "子工程只包含基础运维,工作流平台,前端业务工程模板"
+            }
+          ]
+        },
+        {
+          "title": "后端下载",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "基础运维",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "网关服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/gd-sys-gateway-4.0.1.RELEASE.jar",
+                  "remark": "gd-sys-gateway-4.0.1.RELEASE.jar"
+                },
+                {
+                  "title": "鉴权服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/gd-sys-auth-4.0.1.RELEASE.jar",
+                  "remark": "gd-sys-auth-4.0.1.RELEASE.jar"
+                },
+                {
+                  "title": "运维服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/gd-sys-system-4.0.1.RELEASE.jar",
+                  "remark": "gd-sys-system-4.0.1.RELEASE.jar"
+                },
+                {
+                  "title": "nacos配置文件",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/GdSys4.0.1Release%20nacos_config.zip",
+                  "remark": "GdSys4.0.1Release nacos_config.zip"
+                },
+                {
+                  "title": "PostgreSQL-数据库",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/db-init-4.0.1.RELEASE.sql",
+                  "remark": "db-init-4.0.1.RELEASE.sql"
+                }
+              ]
+            },
+            {
+              "bigTitle": "流程定制平台",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "流程平台服务",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/bpm-service-1.0.0.RELEASE.jar",
+                  "remark": "bpm-service-1.0.0.RELEASE.jar"
+                },
+                {
+                  "title": "nacos配置文件",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/gdbpm-1.0.zip",
+                  "remark": "gdbpm-1.0.zip"
+                },
+                {
+                  "title": "PostgreSQL-数据库",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/pg-gdbpm.sql",
+                  "remark": "pg-gdbpm.sql"
+                },
+                {
+                  "title": "PG数据库函数脚本",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/PG%E6%95%B0%E6%8D%AE%E5%BA%93%E5%87%BD%E6%95%B0%E8%84%9A%E6%9C%AC",
+                  "remark": "PG数据库函数脚本"
+                },
+                {
+                  "title": "PG视图脚本",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/PG%E8%A7%86%E5%9B%BE",
+                  "remark": "PG视图脚本"
+                },
+                {
+                  "title": "Oracle数据库",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/oracle-gdbpm.dmp",
+                  "remark": "oracle-gdbpm.dmp"
+                },
+                {
+                  "title": "Oracle函数脚本",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%87%BD%E6%95%B0%E8%84%9A%E6%9C%AC",
+                  "remark": "Oracle函数脚本"
+                },
+                {
+                  "title": "Oracle视图脚本",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/Oracle%E8%A7%86%E5%9B%BE",
+                  "remark": "Oracle视图脚本"
+                },
+                {
+                  "title": "工作流远程监听配置说明",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/%E8%BF%9C%E7%A8%8B%E7%9B%91%E5%90%AC%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E.md",
+                  "remark": " 远程监听配置说明.md"
+                }
+              ]
+            },
+            {
+              "bigTitle": "业务工程模板",
+              "url": "",
+              "remark": "",
+              "con": [
+                {
+                  "title": "纯净版Git地址",
+                  "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/platpro/tree/4.0.1.RELEASE",
+                  "remark": "只包括后端工程模板"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "文档下载",
+          "url": "",
+          "remark": "",
+          "chil": [
+            {
+              "bigTitle": "",
+              "title": "基础运维平台操作手册",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.1Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B44.0.1.Release%E5%B9%B3%E5%8F%B0%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docm",
+              "remark": "文档跳转"
+            },
+            {
+              "title": "基础运维开发运维手册",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/4.0.0Release/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%E8%BF%90%E7%BB%B4%E6%89%8B%E5%86%8C.doc",
+              "bigTitle": "",
+              "remark": "文档跳转"
+            },
+            {
+              "bigTitle": "",
+              "title": "基础运维工作流平台操作手册",
+              "url": "http://10.0.1.250:9090/dept-base/basemng/basis/source/sysdoc/blob/master/bpm1.0.0.RELEASE/%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B9%B3%E5%8F%B0%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.docx",
+              "remark": "文档跳转"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
