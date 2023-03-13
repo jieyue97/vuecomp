@@ -6,7 +6,7 @@
 
 -- 基本的 xmlStr 传入，可更改节点颜色属性、可保存流程信息、自定义节点属性表单、自定义流程属性表单、下载 xml、下载 SVG 等操作,用法
 
-![An image](/gdui/img/bpnm-js.png)
+![An image](/vuecomp/img/bpnm-js.png)
 
 ```js
 /*

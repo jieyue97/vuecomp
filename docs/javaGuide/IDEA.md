@@ -7,7 +7,7 @@
 - 这里点击左侧 Other version，选择一下其他版本。
 
 拖到版本 2020.1，选择 2020.1.3，选择社区版，然后下载 Windows（exe），如图：
-![An image](/gdui/guideImg/IDEA1.png)
+![An image](/vuecomp/guideImg/IDEA1.png)
 
 - 将安装程序以管理员身份运行
 
@@ -19,4 +19,4 @@
 
 然后在 settings 页面，选择 plugins,在 plugins 搜索 EasyCode-MybatisCodeHelperPro，点击后面的 install 即可(安装完后要重启 IDEA 哦)
 
-![An image](/gdui/guideImg/installcj.webp)![An image](/gdui/guideImg/installcj1.webp)
+![An image](/vuecomp/guideImg/installcj.webp)![An image](/vuecomp/guideImg/installcj1.webp)

@@ -6,9 +6,9 @@
 
 在新建 iconfont 的时候或者修改项目信息进行修改
 
-![An image](/gdui/iconImg/setting.png)
+![An image](/vuecomp/iconImg/setting.png)
 
-![An image](/gdui/iconImg/setting1.jpg)
+![An image](/vuecomp/iconImg/setting1.jpg)
 
 **使用**
 
@@ -20,9 +20,9 @@
 
 直接在本地修改
 
-![An image](/gdui/iconImg/local.png)
-![An image](/gdui/iconImg/local2.png)
+![An image](/vuecomp/iconImg/local.png)
+![An image](/vuecomp/iconImg/local2.png)
 
 **使用**
 
-![An image](/gdui/iconImg/local1.png)
+![An image](/vuecomp/iconImg/local1.png)

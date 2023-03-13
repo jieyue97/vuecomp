@@ -24,7 +24,7 @@ JDK 是 Java 语言的软件开发工具包，主要用于移动设备、嵌入�
 
 git 地址:http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/newversion/tools/back-end
 
-![An image](/gdui/guideImg/JDK3.png)
+![An image](/vuecomp/guideImg/JDK3.png)
 
 首先，找到管理员授权 git 工程 A 权限。
 
@@ -41,10 +41,10 @@ git 地址:http://10.0.1.250:9090/rdcenter/basersdep/flowengine/product/basemng/
 - 右键单击计算机->属性->高级系统设置，选择“环境变量”。在“系统变量”栏下单击“新建”，创建新的系统环境变量。
 - 点击新建：变量名"JAVA_HOME"，变量值"C:\Program Files\Java\jdk1.8.0_91"（变量值为 jdk 在你电脑的位置）点击确定就可以啦；
 
-![An image](/gdui/guideImg/JDK2.png)
+![An image](/vuecomp/guideImg/JDK2.png)
 
 - 使用 java 命令确认环境是否配置成功
 
 win+R 打开运行，输入 CMD 打打命令提示符窗口（有以下显示，则环境配置成功)
 
-![An image](/gdui/guideImg/JDK4.png)
+![An image](/vuecomp/guideImg/JDK4.png)

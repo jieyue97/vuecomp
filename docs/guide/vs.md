@@ -3,23 +3,23 @@
 - 下载并安装(版本 1.67.1)<br>
 - 下载地址: "https://code.visualstudio.com"
 
-![An image](/gdui/img/vsaz.png)
+![An image](/vuecomp/img/vsaz.png)
 
 ## 建议配置
 
 #### - Chinese (Simplified) (简体中文) Language Pack for Visual Studio Code<br>
 
-![An image](/gdui/img/Chinese.webp)<br>
+![An image](/vuecomp/img/Chinese.webp)<br>
 
 #### - Prettier - Code formatter
 
 (安装成功后，编辑器默认的格式化处理就会被 prettier 代替， 默认快捷键是 alt + shift + f)<br>
 
-![An image](/gdui/img/prettier.webp)<br>
+![An image](/vuecomp/img/prettier.webp)<br>
 
 #### - ESLint<br>
 
-![An image](/gdui/img/eslint.webp)<br>
+![An image](/vuecomp/img/eslint.webp)<br>
 
 ESLint 是一个以可扩展、每条规则独立的，被设计为完全可配置的 lint 工具，一个 QA 工具，用来作为静态代码检查,避免低级错误和统一代码的风格。<br>
 

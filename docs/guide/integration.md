@@ -9,9 +9,9 @@
 
 #### 配置：
 
-![An image](/gdui/img/jenkins-guide-submodule.png)
+![An image](/vuecomp/img/jenkins-guide-submodule.png)
 
 #### 添加额外指令：
 
 npm run pullGit 将 pull 所依赖的框架子系统代码。
-![An image](/gdui/img/jenkins-guide-submodule-shell.png)
+![An image](/vuecomp/img/jenkins-guide-submodule-shell.png)

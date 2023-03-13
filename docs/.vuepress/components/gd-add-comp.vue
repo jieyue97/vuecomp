@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     toServe() {
-      window.open('http://10.0.1.247:8088/view/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B4/job/gdui/', '_black')
+      window.open('http://10.0.1.247:8088/view/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B4/job/vuecomp/', '_black')
     },
     getDataFromLocal() {
       this.$axios.post('http://10.1.6.140:3000/localcomp').then((res) => {

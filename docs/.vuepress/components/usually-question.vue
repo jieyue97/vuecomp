@@ -17,13 +17,13 @@
             <div>
               <el-image
                 style="width: 100px; height: 100px; margin-right: 8px"
-                :src="`/gdui/question/${pic.name}`"
+                :src="`/vuecomp/question/${pic.name}`"
                 v-for="(pic, picIndex) in item.errPic"
                 :key="picIndex"
                 :preview-src-list="getList(item.errPic)"
               >
               </el-image>
-              <!-- <img :src="`/gdui/question/${pic.name}`" alt="" v-for="(pic, picIndex) in item.errPic" :key="picIndex" style="margin-right: 8px; width: 100px; height: 100px" /> -->
+              <!-- <img :src="`/vuecomp/question/${pic.name}`" alt="" v-for="(pic, picIndex) in item.errPic" :key="picIndex" style="margin-right: 8px; width: 100px; height: 100px" /> -->
             </div>
 
             <!-- <el-upload action list-type="picture-card" :auto-upload="false" multiple :file-list="getList(item)">
@@ -37,7 +37,7 @@
             <div>
               <el-image
                 style="width: 100px; height: 100px; margin-right: 8px"
-                :src="`/gdui/question/${pic.name}`"
+                :src="`/vuecomp/question/${pic.name}`"
                 v-for="(pic, picIndex) in item.sucessPic"
                 :key="picIndex"
                 :preview-src-list="getList(item.sucessPic)"
@@ -214,7 +214,7 @@ export default {
   methods: {
     getList(data) {
       return data.map((res) => {
-        return `/gdui/question/${res.name}`
+        return `/vuecomp/question/${res.name}`
       })
     },
     closedrawer() {
@@ -286,7 +286,7 @@ export default {
       // this.form = JSON.parse(JSON.stringify(data))
     },
     toServe() {
-      window.open('http://10.0.1.247:8088/view/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B4/job/gdui/', '_black')
+      window.open('http://10.0.1.247:8088/view/%E5%9F%BA%E7%A1%80%E8%BF%90%E7%BB%B4/job/vuecomp/', '_black')
     },
     getDataFromLocal() {
       this.$axios.post('http://10.1.6.140:3000/localcomp').then((res) => {

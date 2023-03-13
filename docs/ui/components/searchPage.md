@@ -195,7 +195,7 @@
 ### 效果查看
 
 **高度随着页面自动变化，超出表格显示滚动条**
-![An image](/gdui/gif/table_auto.gif)
+![An image](/vuecomp/gif/table_auto.gif)
 
 **高度固定在底部，超出表格显示滚动条**
-![An image](/gdui/gif/table-_fix.gif)
+![An image](/vuecomp/gif/table-_fix.gif)

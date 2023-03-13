@@ -2,11 +2,11 @@
 
 - 点击菜单栏 View→Tool Windows→Maven，之后右侧便出现 Maven 窗口，依次点击 clean→package。
 
-![An image](/gdui/guideImg/package.png) ![An image](/gdui/guideImg/package1.png)
+![An image](/vuecomp/guideImg/package.png) ![An image](/vuecomp/guideImg/package1.png)
 
 - 打包成功后就会出现 target 文件夹
 
-![An image](/gdui/guideImg/package2.png)
+![An image](/vuecomp/guideImg/package2.png)
 
 ## Maven 简介
 

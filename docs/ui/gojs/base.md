@@ -24,7 +24,7 @@ components: {
 
 ### 去除关系图水印
 
-- 先下载 fix.js 文件并放到工程的 core 文件夹下，下载地址：<a href="/gdui/direct/fix.js" download="fix.js" style="color: #409eff ">fix.js</a>
+- 先下载 fix.js 文件并放到工程的 core 文件夹下，下载地址：<a href="/vuecomp/direct/fix.js" download="fix.js" style="color: #409eff ">fix.js</a>
 - 在 package.json 文件的 scripts 对象里面添加 <font style="color:red;font-size:16px">"fix": "node core/fix.js"</font>
 - 在项目根目录运行 <font style="color:red;font-size:16px">npm run fix </font> 即可去除水印
 

@@ -7,7 +7,7 @@
             <span>大屏模板列表</span>
           </div>
           <div v-for="o in 2" :key="o" class="text item" :class="activeName === o ? 'active' : ''" @click="tabChange(o)">
-            {{ '模板 ' + o }} <a :href="`/gdui/bigscreen/gd-screen${o}.zip`" :download="`gd-screen${o}.zip`" style="color: #083b70;float:right;font-size:14px">下载</a>
+            {{ '模板 ' + o }} <a :href="`/vuecomp/bigscreen/gd-screen${o}.zip`" :download="`gd-screen${o}.zip`" style="color: #083b70;float:right;font-size:14px">下载</a>
           </div>
         </el-card>
       </el-aside>

@@ -20,11 +20,11 @@ npm run docs:dev
 
 同时要注意自己是在哪个文件夹下面建的文档,需要去对应的文件目录下建一个 md 文件,如 <font color="red"> createdDocs.md </font> 如图:
 
-![An image](/gdui/guideImg/docs-createdDocs.png)
+![An image](/vuecomp/guideImg/docs-createdDocs.png)
 
 当你创建完之后发现,文档上面不会马上出现刚刚你新建的文档,或者以下报错,如图:
 
-![An image](/gdui/guideImg/docs-docsError.png)
+![An image](/vuecomp/guideImg/docs-docsError.png)
 
 这时候可以执行停止命令,重新运行命令 npm run docs:dev
 

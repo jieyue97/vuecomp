@@ -18,17 +18,17 @@ npm run comp gd_demo
 
 如图所示:
 
-![An image](/gdui/guideImg/docs-demo1.png)
+![An image](/vuecomp/guideImg/docs-demo1.png)
 
 - 该文件就是你刚刚运行命令 npm run comp gd_demo 创建的实例
 
-![An image](/gdui/guideImg/docs-demo2.png)
+![An image](/vuecomp/guideImg/docs-demo2.png)
 
 写好测试用例之后如何访问,就是你的 ip 和端口,以及刚刚<font color='red'> gd_demo.vue </font>文件的 <font color='red'> name</font> 属性访问,如图所示:
 
-![An image](/gdui/guideImg/docs-demo3.png)
+![An image](/vuecomp/guideImg/docs-demo3.png)
 
-![An image](/gdui/guideImg/docs-demo4.png)
+![An image](/vuecomp/guideImg/docs-demo4.png)
 
 - 如果该组件测试通过之后即可上传到库中
 
@@ -60,15 +60,15 @@ npm login
 
 如图所示:
 
-![An image](/gdui/guideImg/docs-npmLogin.png)
+![An image](/vuecomp/guideImg/docs-npmLogin.png)
 
 - 到这一步了是不是很激动,以为就要发布了,别急,请看下自己的 package.json 文件,版本是不是最新的,保证自己发布的时候代码是最新的,如图所示:
 
-![An image](/gdui/guideImg/docs-package.png)
+![An image](/vuecomp/guideImg/docs-package.png)
 
 - 本地的 package.json 确认之后,再去 npm 官网 ( https://www.npmjs.com/package/gd_vue_components ) 看下对应的版本,如图所示:
 
-![An image](/gdui/guideImg/docs-npm.png)
+![An image](/vuecomp/guideImg/docs-npm.png)
 
 如果本地版本低于线上的版本,这时发布的话会失败的,理论上不可以往低版本发布,
 
@@ -85,7 +85,7 @@ npm run tonpm
 
 发布成功,如图所示:
 
-![An image](/gdui/guideImg/docs-npmSuccess.png)
+![An image](/vuecomp/guideImg/docs-npmSuccess.png)
 
 - 当发布成功之后自己变可以测试最新的线上组件了,需要把本地的 node 包更新,主要也是需要使用 cnpm 执行该命令的
 

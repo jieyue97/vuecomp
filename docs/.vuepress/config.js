@@ -3,7 +3,7 @@ const sidebar = require('./sidebar')
 const path = require('path')
 module.exports = {
   title: 'GuoDi在线辅助平台',
-  base: '/gdui/', // 设置站点根路径
+  base: '/vuecomp/', // 设置站点根路径
   locales: {
     '/': {
       lang: 'zh-CN',

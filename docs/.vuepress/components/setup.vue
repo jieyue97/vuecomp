@@ -13,7 +13,7 @@
       </div>
       <div class="right-panner">
         <slot>
-          <img src="/gdui/img/shouye.png" alt="" />
+          <img src="/vuecomp/img/shouye.png" alt="" />
         </slot>
       </div>
     </div>

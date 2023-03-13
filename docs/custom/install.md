@@ -14,7 +14,7 @@ npm run dev
 ```
 
 安装完依赖之后运行如果报以下错误:
-![An image](/gdui/guideImg/error1.png)
+![An image](/vuecomp/guideImg/error1.png)
 
 需要再次安装插件
 

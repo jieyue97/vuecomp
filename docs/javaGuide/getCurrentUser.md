@@ -1,8 +1,8 @@
 # 如何获取当前用户？
 
-<!-- ![An image](/gdui/guideImg/example1.png)
+<!-- ![An image](/vuecomp/guideImg/example1.png)
 
-![An image](/gdui/guideImg/example2.png) -->
+![An image](/vuecomp/guideImg/example2.png) -->
 
 有两种方式:
 

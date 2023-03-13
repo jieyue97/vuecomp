@@ -35,7 +35,7 @@ export default {
       option: [
         {
           label: '国家',
-          list: [{ alias: '中国', url: 'geo/china.json', href: '/gdui/geo/china.json' }]
+          list: [{ alias: '中国', url: 'geo/china.json', href: '/vuecomp/geo/china.json' }]
         },
         {
           label: '省',
@@ -45,7 +45,7 @@ export default {
             const province = mapCity.find(item => item.geo.split('/')[1] == temp['id'])
             temp['alias'] = province?.name
             temp['url'] = `geo/province/${item.substring(2)}`
-            temp['href'] = `/gdui/geo/province/${item.substring(2)}`
+            temp['href'] = `/vuecomp/geo/province/${item.substring(2)}`
             return temp
           })
         },
@@ -57,7 +57,7 @@ export default {
             const city = mapCity.find(item => item.id == temp['id'])
             temp['alias'] = city?.name || mapCityPlus[temp['id']]
             temp['url'] = `geo/city/${item.substring(2)}`
-            temp['href'] = `/gdui/geo/city/${item.substring(2)}`
+            temp['href'] = `/vuecomp/geo/city/${item.substring(2)}`
             return temp
           })
         }

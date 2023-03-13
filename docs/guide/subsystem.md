@@ -35,7 +35,7 @@ npm run addSys 子系统的名称
 :::demo
 
 ```js
-<a href="/gdui/app.zip" download="app.zip" style="color: #409eff ">
+<a href="/vuecomp/app.zip" download="app.zip" style="color: #409eff ">
   下载子系统
 </a>
 ```
@@ -52,11 +52,11 @@ npm run dev
 
 - 这是在基础运维新建的工程模块如图所示:
 
-![An image](/gdui/guideImg/add-system1.png)
+![An image](/vuecomp/guideImg/add-system1.png)
 
 - 需要在新建的工程模块,找到 permission.js 文件,并且按照下图修改,即可成功运行
 
-![An image](/gdui/guideImg/add-system3.jpg)
+![An image](/vuecomp/guideImg/add-system3.jpg)
 
 ## 删除子系统
 
