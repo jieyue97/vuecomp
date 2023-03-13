@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[70],{1136:function(n,t,e){"use strict";e.r(t);var i={name:"SvgIcon",data:function(){return{prinftShow:!0,maximized:!1}},methods:{}},s=e(27),a=Object(s.a)(i,(function(){var n=this.$createElement,t=this._self._c||n;return t("div",[t("gd-svg",{attrs:{"icon-class":"blue-info"}})],1)}),[],!1,null,null,null);t.default=a.exports}}]);
