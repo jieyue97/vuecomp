@@ -86,7 +86,7 @@
           delivery: false,
           type: [],
           resource: '',
-          desc: '',
+          desc: ''
         },
         border: true,
         //表头数据
@@ -96,7 +96,7 @@
           { prop: 'name', label: '名称' },
           { prop: 'districtName', label: '城市' },
           { prop: 'dataServiceType', label: 'icon' },
-          { prop: 'caozuo', label: '操作' },
+          { prop: 'caozuo', label: '操作' }
         ],
         //内容
         tableData: [
@@ -105,7 +105,7 @@
             name: 'sdfgsdfgssdf',
             dataServiceType: 1,
             secretGrade: -1,
-            districtName: '湛江市/廉江市',
+            districtName: '湛江市/廉江市'
           },
           {
             id: '1413023861319323650',
@@ -113,7 +113,7 @@
             alias: '0708-test-1',
             dataServiceType: 1,
             districtName: '湛江市',
-            servicePublishParamVOList: [],
+            servicePublishParamVOList: []
           },
           {
             id: '1413023370535370753',
@@ -122,28 +122,28 @@
             districtName: '湛江市',
             servicePublishParamVOList: [],
             subSourceUrl: '',
-            siteAddress: '',
+            siteAddress: ''
           },
           {
             id: '1413022989289930753',
             name: '0708-test-1',
             dataServiceType: 1,
             districtName: '湛江市',
-            siteAddress: '',
+            siteAddress: ''
           },
           {
             id: '1413022167978098689',
             name: '0708-test-1',
             dataServiceType: 2,
-            districtName: '湛江市',
-          },
+            districtName: '湛江市'
+          }
         ],
         total: 5,
         pageParams: {
           size: 3,
-          current: 1,
+          current: 1
         },
-        pageSizes: [2, 4, 5, 8, 10],
+        pageSizes: [2, 4, 5, 8, 10]
       }
     },
     methods: {
@@ -173,10 +173,10 @@
           delivery: false,
           type: [],
           resource: '',
-          desc: '',
+          desc: ''
         }
-      },
-    },
+      }
+    }
   }
 </script>
 <style>
@@ -195,7 +195,7 @@
 ### 效果查看
 
 **高度随着页面自动变化，超出表格显示滚动条**
-![An image](/vuepressblog/gif/table_auto.gif)
+![An image](/gdui/gif/table_auto.gif)
 
 **高度固定在底部，超出表格显示滚动条**
-![An image](/vuepressblog/gif/table-_fix.gif)
+![An image](/gdui/gif/table-_fix.gif)

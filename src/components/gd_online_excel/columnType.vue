@@ -174,6 +174,16 @@ export default {
             break
           }
         }
+        if (val) {
+          const list = val.split('-')
+          // 补零
+          for (let i in list) {
+            if (list[i].length === 1) {
+              list[i] = '0' + list[i]
+            }
+          }
+          val = list.join('-')
+        }
         return val
       }
     }
@@ -198,6 +208,7 @@ export default {
     }
     if (this.propName && this.valueType === 'date') {
       this.columnVal = this.setDateFilter(this.propName, this.dateFilterDate)
+
     }
   },
   mounted() {

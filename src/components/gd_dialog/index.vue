@@ -3,7 +3,7 @@
     <transition name="el-fade-in">
       <div v-if="currentClosed && !currentMinimized && modal && !inline" class="ns-dialog__modal"></div>
     </transition>
-    <transition name="el-fade-in">
+    <transition name="el-fade-in" @after-enter="afterEnter" @after-leave="afterLeave">
       <el-container
         v-if="currentClosed"
         v-show="!currentMinimized"
@@ -19,9 +19,9 @@
           :height="headerHeight"
           :style="{
             cursor: 'pointer',
-            'background-color': themeColor
+            'background-color': themeColor,
+            ...headerStyle,
           }"
-          title="可拖动"
         >
           <slot name="icon" />
           <div class="ns-dialog__title">
@@ -39,18 +39,21 @@
               <i :style="{ color: titleColor ? titleColor : '#fff' }" :class="icons[2]">最小</i>
             </span>
             <span v-if="maximizable" class="ns-dialog__tool" @click="handleMaximized">
-              <img v-if="currentMaximized" style="width:16px;" src="./images/normal-svg.svg" alt="" />
-              <img v-else style="width:16px;" src="./images/max-svg.svg" alt="" />
-              <!-- <i :style="{ color: titleColor ? titleColor : '#fff' }" :class="currentMaximized ? 'icon iconfont-hainan iconsuoxiao1' : 'icon iconfont-hainan iconzuidahua1'"></i> -->
+              <!-- <img v-if="currentMaximized" style="width: 16px" src="./images/normal-svg.svg" alt="" />
+              <img v-else style="width: 16px" src="./images/max-svg.svg" alt="" /> -->
+              <i
+                :style="{ color: titleColor ? titleColor : '#fff' }"
+                :class="currentMaximized ? 'icon iconfont-gdzjk icon-gdzjkzuixiaohua' : 'icon iconfont-gdzjk icon-gdzjkzuidahua'"
+              ></i>
             </span>
 
             <span v-if="closable" class="ns-dialog__tool" @click="handleClosed">
-              <img style="width:16px;margin-top: 4px;margin-left: 5px;" src="./images/close.svg" alt="" />
-              <!-- <i :style="{ color: titleColor ? titleColor : '#fff' }" :class="icons[5]"></i> -->
+              <!-- <img style="width: 16px; margin-top: 4px; margin-left: 5px" src="./images/close.svg" alt="" /> -->
+              <i :style="{ color: titleColor ? titleColor : '#fff' }" :class="icons[5]"></i>
             </span>
           </div>
         </el-header>
-        <el-main class="ns-dialog__body">
+        <el-main class="ns-dialog__body" :style="gdDialogBody">
           <div v-if="!hasHeader" class="ns-dialog__tool" style="text-align: right" @click="handleClosed">
             <i :style="{ color: titleColor ? titleColor : '#fff' }" :class="icons[5]"></i>
           </div>
@@ -71,6 +74,9 @@
 </template>
 
 <script>
+import '../../assets/iconfont-gdzjk/iconfont.css'
+import '../../assets/iconfont-gdzjk/iconfont'
+import '../../assets/iconfont-gdzjk/iconfont.js'
 /**
  * 窗体弹框组件
  * @module widgets/ns-dialog
@@ -78,6 +84,7 @@
  */
 import draggable from '../../untils/draggable/draggable'
 import resizable from '../../untils/draggable/resizable'
+
 /**
  * 插槽
  * @member slots
@@ -94,7 +101,7 @@ export default {
   name: 'GdDialog',
   directives: {
     draggable,
-    resizable
+    resizable,
   },
   /**
    * 属性参数
@@ -128,160 +135,170 @@ export default {
     // 标题
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     // 标题图标
     icon: {
       type: String,
-      default: ''
+      default: '',
     },
     // 宽度
     width: {
       type: [String, Number],
-      default: 'auto'
+      default: 'auto',
     },
     themeColor: {
       type: String,
-      default: 'rgb(30, 129, 241)'
+      default: 'rgb(30, 129, 241)',
     },
     // 高度
     height: {
       type: [String, Number],
-      default: 'auto'
+      default: 'auto',
     },
     // 最大高度
     maxHeight: {
       type: [String, Number],
-      default: 'auto'
+      default: 'auto',
     },
     // 左位置
     left: {
       type: [String, Number],
-      default: null
+      default: null,
     },
     // 上位置
     top: {
       type: [String, Number],
-      default: null
+      default: null,
     },
     // 能否关闭
     closable: {
       type: Boolean,
-      default: true
+      default: true,
     },
     // 能否折叠
     collapsible: {
       type: Boolean,
-      default: false
+      default: false,
     },
     // 能否最大化
     maximizable: {
       type: Boolean,
-      default: false
+      default: false,
     },
     // 能否最小化
     minimizable: {
       type: Boolean,
-      default: false
+      default: false,
     },
     // 是否关闭
     closed: {
       type: Boolean,
-      default: true
+      default: true,
     },
     // 是否折叠
     collapsed: {
       type: Boolean,
-      default: false
+      default: false,
     },
     // 是否最小化
     minimized: {
       type: Boolean,
-      default: false
+      default: false,
     },
     // 是否最大化
     maximized: {
       type: Boolean,
-      default: false
+      default: false,
     },
     // 是否需要遮罩层
     modal: {
       type: Boolean,
-      default: true
+      default: true,
     },
     // 是否开启拖拽
     draggable: {
       type: [Boolean, Object],
-      default: false
+      default: false,
     },
     // 是否能改变尺寸
     resizable: {
       type: [Boolean, Object],
-      default: false
+      default: false,
     },
     // 头部高度
     headerHeight: {
       type: String,
-      default: '50px'
+      default: '50px',
     },
     // 底部高度
     footerHeight: {
       type: String,
-      default: '50px'
+      default: '50px',
     },
     // 层级
     zIndex: {
       type: Number,
-      default: 2000
+      default: 2000,
     },
     // 边框是否需要阴影
     shadow: {
       type: Boolean,
-      default: true
+      default: true,
     },
     // 是否以内联方式显示
     inline: {
       type: Boolean,
-      default: false
+      default: false,
     },
     appendToBody: {
       type: Boolean,
-      default: true
+      default: true,
     },
     icons: {
       type: Array,
       default() {
         return ['el-icon-caret-bottom', 'el-icon-caret-top', 'iconfont icon-mini', 'iconfont icon-mid', 'iconfont icon-full', 'el-icon-close']
-      }
+      },
     },
     // 标题的内容的颜色（文字与图标）
     titleColor: {
       type: String,
       default: () => {
         return ''
-      }
+      },
     },
     // footer的位置（左left，中center，右right）
     btnTextAlign: {
       type: String,
       default: () => {
         return 'right'
-      }
+      },
     },
     // 尺寸大小固定值，big（800px）、default（600px）、small（400px）、
     size: {
       type: String,
       default: () => {
         return 'default'
-      }
-    }
+      },
+    },
+    // 自定义头部样式
+    headerStyle: {
+      type: Object,
+      default: () => {},
+    },
+    // 自定义头部样式
+    gdDialogBody: {
+      type: Object,
+      default: () => {},
+    },
   },
   data() {
     return {
       currentCollapsed: this.collapsed,
       currentMinimized: this.minimized,
       currentMaximized: this.maximized,
-      currentClosed: this.closed
+      currentClosed: this.closed,
     }
   },
   computed: {
@@ -294,13 +311,13 @@ export default {
     },
     wrapperClasses() {
       return {
-        'is-inline': this.inline
+        'is-inline': this.inline,
       }
     },
     wrapperStyles() {
       return {
         'z-index': this.zIndex,
-        height: this.inline ? this.height : 'auto'
+        height: this.inline ? this.height : 'auto',
       }
     },
     classes() {
@@ -310,7 +327,7 @@ export default {
         'is-maximized': this.currentMaximized,
         'is-collapsed': this.currentCollapsed,
         'is-shadow': this.shadow,
-        'is-inline': this.inline
+        'is-inline': this.inline,
       }
     },
     styles() {
@@ -318,7 +335,7 @@ export default {
       if (this.currentMaximized) {
         style = {
           left: 0,
-          top: 0
+          top: 0,
         }
         if (this.currentCollapsed) {
           style.height = this.headerHeight
@@ -329,7 +346,7 @@ export default {
       style = {
         width: this.width,
         height: this.currentCollapsed ? this.headerHeight : this.height,
-        'max-height': this.maxHeight
+        'max-height': this.maxHeight,
       }
       if (this.width === 'auto') {
         style['width'] = this.size === 'big' ? '800px' : this.size === 'default' ? '600px' : '400px'
@@ -356,7 +373,7 @@ export default {
         ? Object.assign(
             {
               handle: '.ns-dialog__header',
-              onStartDrag: e => {
+              onStartDrag: (e) => {
                 /**
                  * 开始拖拽时触发
                  * @event on-start-drag
@@ -364,7 +381,7 @@ export default {
                  */
                 this.$emit('on-start-drag', e)
               },
-              onStopDrag: e => {
+              onStopDrag: (e) => {
                 /**
                  * 拖拽结束时触发
                  * @event on-stop-drag
@@ -372,14 +389,14 @@ export default {
                  */
                 this.$emit('on-stop-drag', e)
               },
-              onDrag: e => {
+              onDrag: (e) => {
                 /**
                  * 正在拖拽时触发
                  * @event on-drag
                  * @param {object} e 拖拽事件对象
                  */
                 this.$emit('on-drag', e)
-              }
+              },
             },
             this.draggable
           )
@@ -392,7 +409,7 @@ export default {
             {
               // minWidth: 100,
               // minHeight: 41,
-              onStartResize: e => {
+              onStartResize: (e) => {
                 /**
                  * 开始改变尺寸时触发
                  * @event on-start-resize
@@ -400,7 +417,7 @@ export default {
                  */
                 this.$emit('on-start-resize', e)
               },
-              onStopResize: e => {
+              onStopResize: (e) => {
                 /**
                  * 改变尺寸结束时触发
                  * @event on-stop-resize
@@ -408,19 +425,19 @@ export default {
                  */
                 this.$emit('on-stop-resize', e)
               },
-              onResize: e => {
+              onResize: (e) => {
                 /**
                  * 正在改变尺寸时触发
                  * @event on-resize
                  * @param {object} e resize事件对象
                  */
                 this.$emit('on-resize', e)
-              }
+              },
             },
             this.resizable
           )
         : false
-    }
+    },
   },
   watch: {
     collapsed(val) {
@@ -434,12 +451,18 @@ export default {
     },
     closed(val) {
       this.currentClosed = val
+      if (val) {
+        this.$emit('open')
+      } else {
+        this.$emit('close')
+      }
       if (!val && this.appendToBody && this.$el && !this.inline) {
         document.body.appendChild(this.$el)
       }
-    }
+    },
   },
   mounted() {
+    // debugger
     if (this.appendToBody && this.$el && !this.inline) {
       document.body.appendChild(this.$el)
     }
@@ -481,16 +504,17 @@ export default {
     handleClosed() {
       this.currentClosed = false
       this.$emit('update:closed', this.currentClosed)
-      /**
-       * 窗体关闭触发
-       * @event on-closed
-       */
-      this.$emit('on-closed', this)
     },
     handleClick() {
       this.$emit('click', this)
-    }
-  }
+    },
+    afterEnter() {
+      this.$emit('opened')
+    },
+    afterLeave() {
+      this.$emit('closed')
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>

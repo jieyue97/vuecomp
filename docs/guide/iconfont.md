@@ -1,4 +1,4 @@
-# 图标的使用
+<!-- # 图标的使用
 
 **介绍**
 
@@ -28,4 +28,4 @@ import '@modularize/icons'
 ```js
 // 使用svg
 <svg-icon icon-class="名称"></svg-icon>
-```
+``` -->

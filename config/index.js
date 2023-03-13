@@ -23,11 +23,11 @@ module.exports = {
   build: {
     env: require('./prod.env'),
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsPublicPath: '/vuecomp/',
+    assetsPublicPath: '/gdui/',
     assetsSubDirectory: '/',
     productionSourceMap: true,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css'],
-    bundleAnalyzerReport: process.env.npm_config_report,
+    bundleAnalyzerReport: false,
   },
 }

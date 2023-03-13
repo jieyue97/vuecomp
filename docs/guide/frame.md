@@ -1,4 +1,4 @@
-# 组件库使用
+<!-- # 组件库使用
 
 **介绍**
 
@@ -18,4 +18,4 @@ cnpm i gd_vue_components --save
 import 'gd_vue_components/dist/gd-components.min.css'
 import components from 'gd_vue_components'
 vue.use(components)
-```
+``` -->

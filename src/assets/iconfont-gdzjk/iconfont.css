@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "iconfont-gdzjk"; /* Project id 3325026 */
+  src: url('iconfont.woff2?t=1649822055172') format('woff2'),
+       url('iconfont.woff?t=1649822055172') format('woff'),
+       url('iconfont.ttf?t=1649822055172') format('truetype');
+}
+
+.iconfont-gdzjk {
+  font-family: "iconfont-gdzjk" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-gdzjkzuixiaohua:before {
+  content: "\e757";
+}
+
+.icon-gdzjkzuidahua:before {
+  content: "\e758";
+}
+
+.icon-gdzjkguanbi:before {
+  content: "\e765";
+}
+
+.icon-gdzjkguanbi-moren:before {
+  content: "\e78d";
+}
+

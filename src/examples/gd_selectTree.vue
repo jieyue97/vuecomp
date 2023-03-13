@@ -34,6 +34,7 @@
       :collapseTags="collapseTags"
       :defaulexpand="false"
       :multiple="true"
+      :popoverMaxWidth="'300px'"
     ></gdSelectTree>
   </div>
 </template>

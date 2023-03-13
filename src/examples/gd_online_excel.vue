@@ -2,11 +2,12 @@
   <div>
     <gdOnlineExcel
       ref="tabExcel"
+      class="important-excel"
       :data-table="tableData"
       :columns-list="tableColumns"
       @onSaveFold="onSaveFold"
       :autoBtnList="autoBtnList"
-      :allCellHeight="88">
+      :rulesClass="rulesClass">
     </gdOnlineExcel>
   </div>
 </template>
@@ -57,6 +58,9 @@ export default {
         },
         {
           prop: 'manager',
+          rules: {
+            check: { message: '不能为空', required: true }
+          },
           label: '负责人'
         },
         {
@@ -76,7 +80,7 @@ export default {
           prop: 'nextJobContent',
           label: '工作计划',
           rules: {
-            validate: validatePass
+            check: { message: '不能为空', required: true }
           },
           editorValue: {
             bind: {
@@ -138,6 +142,21 @@ export default {
         reportType: 0
       }
     ]
+    this.tableData = [
+      {
+        deptName: "",
+        jobContent: "",
+        manager: "",
+        nextJobContent: "",
+        progress: '',
+        projectGroupUser: "",
+        projectId: "",
+        projectName: "",
+        remark: "",
+        reportId: "",
+        reportType: ''
+      }
+    ]
   },
   mounted() {},
   methods: {
@@ -154,10 +173,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  /deep/
-  .el-table .el-table__row {
-    .rules-table1 {
-      border: 1px solid #8503fb;
+/deep/.el-excel-table {
+    .el-table .el-table__row{
+     .rules-table1{
+       background-color: #d83552!important;
+     }
     }
-  }
+}
+
 </style>

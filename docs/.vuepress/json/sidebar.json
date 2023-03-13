@@ -1,0 +1,148 @@
+{
+  "/untils/": [
+    {
+      "title": "基础方法",
+      "collapsable": false,
+      "children": ["base", "request", "timedate", "fullscreen", "dom", "regex", "url", "gjhssy"]
+    }
+  ],
+  "/ui/components/": [
+    {
+      "title": "快速上手",
+      "collapsable": false,
+      "children": ["quickstart", "addcomp"]
+    },
+    {
+      "title": "基础组件",
+      "collapsable": false,
+      "children": ["dialog", "table", "pagination", "steps", "customForm", "selectTree", "svgIcon", "title", "drag", "slice-upload", "contextmenu"]
+    },
+    {
+      "title": "特殊组件",
+      "collapsable": false,
+      "children": ["bpmn", "tinymce", "online-excel"]
+    },
+    {
+      "title": "通用实例",
+      "collapsable": false,
+      "children": ["searchPage"]
+    }
+  ],
+  "/ui/echart/": [
+    {
+      "title": "echarts",
+      "collapsable": false,
+      "children": ["detail", "line", "bar", "pie", "scatter", "map"]
+    }
+  ],
+  "/ui/gojs/": [
+    {
+      "title": "关系图安装与使用",
+      "collapsable": false,
+      "children": ["base"]
+    },
+    {
+      "title": "使用示例",
+      "collapsable": true,
+      "children": ["use", "textBlock", "shape", "picture", "panels", "link", "node", "tree", "group", "select", "tooltip", "highlighting", "contextMenu", "button"]
+    },
+    {
+      "title": "常用示例",
+      "collapsable": false,
+      "children": ["layoutTree", "layout", "layoutFlow"]
+    },
+    {
+      "title": "使用文档",
+      "collapsable": false,
+      "children": ["init", "document", "event", "canvasMethod", "nodeMethod", "linkMethod", "treeMethod", "adddeleteMethod"]
+    }
+  ],
+  "/ui/": [
+    {
+      "title": "图标类型",
+      "collapsable": false,
+      "children": ["iconfont", "svg"]
+    }
+  ],
+  "/guide/": [
+    {
+      "title": "环境准备",
+      "collapsable": false,
+      "children": ["build", "vs"]
+    },
+    {
+      "title": "工程搭建",
+      "collapsable": false,
+      "children": ["method"]
+    },
+    {
+      "title": "打包部署",
+      "collapsable": false,
+      "children": ["integration", "pack"]
+    },
+    {
+      "title": "框架使用",
+      "collapsable": false,
+      "children": ["webpack", "subsystem", "route"]
+    },
+    {
+      "title": "内置函数",
+      "collapsable": false,
+      "children": ["base", "dom", "fullscreen", "regex", "request", "timedate", "url", "use"]
+    },
+    {
+      "title": "UI组件扩展开发",
+      "collapsable": false,
+      "children": ["establish ", "develop", "uses"]
+    }
+  ],
+  "/javaGuide/": [
+    {
+      "title": "环境准备",
+      "collapsable": false,
+      "children": [
+        "IDEA",
+        "JDK",
+        "Nacos",
+        "gatewayConfiguration"
+        
+      ]
+    },
+    {
+      "title": "工程搭建",
+      "collapsable": false,
+      "children": [
+        "engineeringConstruction"
+      ]
+    },
+    {
+      "title": "打包部署",
+      "collapsable": false,
+      "children": [
+        "package",
+        "deployment"
+      ]
+    },
+    {
+      "title": "常见问题",
+      "collapsable": false,
+      "children": [
+        "getCurrentUser",
+        "transcoding",
+        "getBeanExample",
+        "createCode",
+        "InsertLog"
+
+      ]
+    }
+
+  ],
+  "/standard/": [
+    {
+      "title": "规范",
+      "collapsable": false,
+      "children": ["note", "props", "compname", "center", "frontend", "research", "config"]
+    }
+  ],
+  "/changelog": ["changelog"]
+}

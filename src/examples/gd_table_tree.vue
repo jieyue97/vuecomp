@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 123 -->
-    <gd-tree-table :data="data" :show-checkbox="true">
+    <gd-tree-table :data="data" :show-checkbox="true" border>
       <gd-tree-table-column prop="name" label="姓名"></gd-tree-table-column>
       <gd-tree-table-column prop="title" label="标题" width="200px"></gd-tree-table-column>
       <gd-tree-table-column prop="email" label="邮箱" width="200px"></gd-tree-table-column>
@@ -85,7 +85,7 @@ function createTree(Mock, url, query) {
         name: '@cname',
         title: '@ctitle',
         email: '@email',
-        parentId: function() {
+        parentId: function () {
           return Math.floor(Math.random() * 20)
         }
       }

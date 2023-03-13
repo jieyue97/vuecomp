@@ -1,0 +1,23 @@
+{
+  "system": [],
+  "wfmng": [
+    {
+      "question": "流程定制模块列表页一进去并不加载数据，而是切换或者点击查询才出来数据",
+      "reason": "组件库存在更新",
+      "solve": "查看国地组件库 gd_vue_components 的版本是不是 0.4.37 及以上",
+      "errPic": [],
+      "sucessPic": []
+    }
+  ],
+  "formDesigner": [],
+  "base": [
+    {
+      "question": "拉取子系统的时候出现 'src/projects/system' already exists in the index and is not a submodule",
+      "reason": "之前有拉取过代码，存在缓存",
+      "solve": "git rm -r --cached 'src/projects/system'",
+      "errPic": [],
+      "sucessPic": []
+    }
+  ],
+  "linecode": []
+}

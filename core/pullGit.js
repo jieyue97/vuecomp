@@ -1,0 +1,6 @@
+console.log('sdsdsdsdsdsdsd')
+require('shelljs/global')
+exec(`git add ./`)
+exec(`git commit -m '同步本地数据'`)
+exec(`git pull`)
+exec(`git push`)

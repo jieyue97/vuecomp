@@ -8,7 +8,6 @@
       trigger="manual"
       v-model="isShowSelect"
       @hide="popoverHide"
-      :width="popoverWidth"
     >
       <div class="pdlr_1">
         <el-input class="mb_5" v-if="filterable" v-model="filterText" :placeholder="placeholder" :size="size"></el-input>
@@ -26,7 +25,7 @@
         :show-checkbox="multiple"
         :node-key="obj.id"
         :check-strictly="checkStrictly"
-        :default-expanded-keys="defaultKey"
+        :default-expanded-keys="defaultKeyList"
         :default-expand-all="defaulexpand"
         :expand-on-click-node="multiple && expandClickNode"
         :check-on-click-node="checkClickNode"
@@ -63,19 +62,23 @@ export default {
   name: 'GdSelectTree',
   // directives: { Clickoutside },
   props: {
+    popoverMaxWidth: {
+      type: String,
+      default: 'calc(100vw - 100px)'
+    },
     //全选
     selectAll: {
       type: Boolean,
       default() {
         return false
-      },
+      }
     },
     // 树结构数据
     data: {
       type: Array,
       default() {
         return []
-      },
+      }
     },
     obj: {
       type: Object,
@@ -85,132 +88,131 @@ export default {
           id: '', // id
           pid: '', //父级id
           label: '', // 显示名称
-          children: '', //子级字段名
+          children: '' //子级字段名
         }
-      },
+      }
     },
     // 是否禁用
     disabled: {
       type: Boolean,
       default() {
         return false
-      },
+      }
     },
     //配置是否可以搜索
     filterable: {
       type: Boolean,
       default() {
         return false
-      },
+      }
     },
     //输入框占位值
     placeholder: {
       type: String,
       default() {
         return '请选择'
-      },
+      }
     },
     //配置是否可多选
     multiple: {
       type: Boolean,
       default() {
         return false
-      },
+      }
     },
     // 配置是否可清空选择
     clearable: {
       type: Boolean,
       default() {
         return false
-      },
+      }
     },
     // 配置多选时是否将选中值按文字的形式展示
     collapseTags: {
       type: Boolean,
       default() {
         return false
-      },
+      }
     },
     // 显示复选框情况下，是否严格遵循父子不互相关联
     checkStrictly: {
       type: Boolean,
       default() {
         return false
-      },
+      }
     },
     radioStrictly: {
       type: Boolean,
       default() {
         return false
-      },
+      }
     },
     //多选是设置点击节点是否可以选中
     checkClickNode: {
       type: Boolean,
       default() {
         return true
-      },
+      }
     },
     //多选时：点击节点展开还是点三角标
     expandClickNode: {
       type: Boolean,
       default() {
         return false
-      },
+      }
     },
     //默认展开
     defaulexpand: {
       type: Boolean,
       default() {
         return true
-      },
+      }
     },
     // 默认选中的节点key
     defaultKey: {
       type: [Number, String, Array, Object],
       default() {
         return []
-      },
+      }
     },
     size: {
       type: String,
       default() {
         return 'small'
-      },
+      }
     },
     width: {
       type: String,
       default() {
         return '100%'
-      },
+      }
     },
     height: {
       type: String,
       default() {
         return '300px'
-      },
+      }
     },
     curValue: {
       default() {
         return ''
-      },
-    },
+      }
+    }
   },
 
   //上面是父组件可传入参数
   data() {
     return {
-      popoverWidth: '', // 气泡宽度
+      // popoverWidth: '', // 气泡宽度
       isShowSelect: false, // 是否显示树状选择器
       options: [], //select option选项
       returnDatas: [], //返回给父组件数组对象
       returnDataKeys: [], //返回父组件数组主键值
       filterText: '', //筛选绑定值
       checkedAll: false, //是否有全选按钮(只有在多选下才能配置)
-      treeArrId: [],
+      treeArrId: []
     }
   },
-
   mounted() {
     // var that = this; //this的指向问题
     // document.addEventListener("click", function (e) {
@@ -218,6 +220,10 @@ export default {
     //   that.isShowSelect = false; //这里that代表组件，this代表document
     // });
     this.$nextTick(() => {
+      const curSelectTreePopoverDom = this.$el.getElementsByClassName('selectTree')[0]
+      if (curSelectTreePopoverDom) {
+        curSelectTreePopoverDom.style['maxWidth'] = this.popoverMaxWidth
+      }
       if (this.curValue) {
         if (typeof this.curValue != 'string' && typeof this.curValue != 'number') {
           this.setKeys(this.curValue)
@@ -230,6 +236,9 @@ export default {
   },
 
   computed: {
+    defaultKeyList(){
+      return Array.isArray(this.defaultKey) ? this.defaultKey : [this.defaultKey]
+    },
     treeData() {
       // 若非树状结构，则转化为树状结构数据
       if (this.obj.children != '') {
@@ -240,7 +249,7 @@ export default {
       } else {
         return this.data
       }
-    },
+    }
   },
   watch: {
     returnDataKeys(newValue, oldValue) {
@@ -275,7 +284,7 @@ export default {
       this.$nextTick(() => {
         this.init()
       })
-    },
+    }
   },
   created() {
     this.treeArrId = []
@@ -283,7 +292,7 @@ export default {
   },
   methods: {
     originTree(treeData) {
-      treeData.forEach((item) => {
+      treeData.forEach(item => {
         this.treeArrId.push(item[this.obj.id])
         if (item.children && item.children.length > 0) {
           this.originTree(item.children)
@@ -340,10 +349,10 @@ export default {
     },
     //下拉框select点击[入口]
     selectClick() {
-      this.$nextTick(function () {
-        //设置下拉框自适应宽度
-        this.popoverWidth = this.$refs.select.$el.clientWidth - 25
-      })
+      // this.$nextTick(function () {
+      //   //设置下拉框自适应宽度
+      //   this.popoverWidth = this.$refs.select.$el.clientWidth - 25
+      // })
       //显示下拉框
       return (this.isShowSelect = !this.isShowSelect)
     },
@@ -365,7 +374,7 @@ export default {
         //多选
         var checkedKeys = this.$refs.tree.getCheckedKeys() // 所有被选中的节点的 key 所组成的数组数据
 
-        checkedKeys = checkedKeys.filter(function (s) {
+        checkedKeys = checkedKeys.filter(function(s) {
           if (typeof s == 'String') {
             return s && s.trim()
           } else {
@@ -374,7 +383,7 @@ export default {
         })
         var t = []
         checkedKeys = this.unique(checkedKeys)
-        this.options = checkedKeys.map((item) => {
+        this.options = checkedKeys.map(item => {
           if (item !== undefined) {
             var node = this.$refs.tree.getNode(item) // 所有被选中的节点对应的node
             t.push(node.data)
@@ -383,7 +392,7 @@ export default {
           return { label: node.label, value: node.key }
         })
 
-        this.returnDataKeys = this.options.map((item) => {
+        this.returnDataKeys = this.options.map(item => {
           return item.value
         })
         this.returnDatas = t
@@ -391,7 +400,7 @@ export default {
       }
     },
     unique(arr) {
-      return arr.filter(function (item, index, arr) {
+      return arr.filter(function(item, index, arr) {
         return arr.indexOf(item, 0) === index
       })
     },
@@ -415,7 +424,7 @@ export default {
       this.options = []
       this.options.push({
         label: data[this.obj.label],
-        value: data[this.obj.id],
+        value: data[this.obj.id]
       })
       this.returnDatas = data
       this.returnDataKeys = data[this.obj.id]
@@ -425,7 +434,7 @@ export default {
       this.$refs.tree.setCheckedKeys(thisKeys)
       this.returnDataKeys = thisKeys
       var t = []
-      thisKeys.map((item) => {
+      thisKeys.map(item => {
         //设置option选项
         var node = this.$refs.tree.getNode(item) // 所有被选中的节点对应的node
         t.push(node.data)
@@ -439,7 +448,7 @@ export default {
       this.$refs.tree.setCheckedNodes(data)
       this.returnDatas = data
       var t = []
-      data.map((item) => {
+      data.map(item => {
         //设置option选项
         t.push(item[this.obj.id])
       })
@@ -451,7 +460,7 @@ export default {
       this.$refs.tree.setChecked(val, false) //设置为未选中
       var node = this.$refs.tree.getNode(val) //获取节点
       if (!this.checkStrictly && node.childNodes.length > 0) {
-        this.treeToList(node).map((item) => {
+        this.treeToList(node).map(item => {
           if (item.childNodes.length <= 0) {
             this.$refs.tree.setChecked(item, false)
           }
@@ -498,7 +507,7 @@ export default {
     },
     // 将一维的扁平数组转换为多层级对象
     buildTree(data, id) {
-      const fa = (id) => {
+      const fa = id => {
         const temp = []
         for (let i = 0; i < data.length; i++) {
           const n = data[i]
@@ -510,15 +519,19 @@ export default {
         return temp
       }
       return fa(id)
-    },
+    }
   },
   destroyed() {
     window.removeEventListener('click', this.handleClickOutside)
-  },
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+.el-popover {
+  min-width: 250px;
+  max-width: 500px;
+}
 .selectTree {
   overflow-x: auto;
   .mt_5 {

@@ -15,25 +15,25 @@ const createLintingRule = () => ({
   include: [resolve('src'), resolve('test')],
   options: {
     formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
-  }
+    emitWarning: !config.dev.showEslintErrorsInOverlay,
+  },
 })
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: process.env.NODE_ENV === 'production' ? './src/components/index.js' : './src/main.js'
+    app: process.env.NODE_ENV === 'production' ? './src/components/index.js' : './src/main.js',
   },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath
+    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      '@': resolve('src')
-    }
+      '@': resolve('src'),
+    },
   },
   module: {
     rules: [
@@ -41,20 +41,20 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: vueLoaderConfig
+        options: vueLoaderConfig,
       },
       {
         test: /\.js$/,
         loader: 'babel-loader?cacheDirectory',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client'), resolve(`node_modules/_gd_vue_components`)]
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client'), resolve(`node_modules/_gd_vue_components`)],
       },
       {
         test: /\.svg$/,
         loader: 'svg-sprite-loader',
         include: [resolve('src/icons')],
         options: {
-          symbolId: 'icon-[name]'
-        }
+          symbolId: 'icon-[name]',
+        },
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -62,26 +62,26 @@ module.exports = {
         exclude: [resolve('src/icons')],
         options: {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
-        }
+          name: utils.assetsPath('img/[name].[hash:7].[ext]'),
+        },
       },
       {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac|pdf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]')
-        }
+          name: utils.assetsPath('media/[name].[hash:7].[ext]'),
+        },
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-        }
-      }
-    ]
+          name: utils.assetsPath('fonts/[name].[hash:7].[ext]'),
+        },
+      },
+    ],
   },
   plugins: [],
   node: {
@@ -94,6 +94,6 @@ module.exports = {
     fs: 'empty',
     net: 'empty',
     tls: 'empty',
-    child_process: 'empty'
-  }
+    child_process: 'empty',
+  },
 }

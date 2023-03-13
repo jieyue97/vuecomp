@@ -84,6 +84,13 @@ const arr = [
         defaultValue: 'false'
       },
       {
+        name: 'popoverMaxWidth',
+        desc: '下拉浮窗最大宽度',
+        paramsType: 'string',
+        value: '--',
+        defaultValue: 'calc(100vw - 100px)'
+      },
+      {
         name: 'checkClickNode',
         desc: '多选是设置点击节点是否可以选中',
         paramsType: 'boolean',

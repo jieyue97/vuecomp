@@ -7,6 +7,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './assets/iconfont/iconfont.css'
 import './assets/iconfont/iconfont'
 import './assets/iconfont/iconfont.js'
+import './assets/iconfont-gdzjk/iconfont.css'
+import './assets/iconfont-gdzjk/iconfont'
+import './assets/iconfont-gdzjk/iconfont.js'
 
 import 'gd_vue_components_all/dist/gd-components.min.css'
 // 线上
@@ -24,9 +27,10 @@ Vue.use(gd_vue_components)
 // 全局组件
 // Vue.use(components)
 /* eslint-disable no-new */
+
 new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: { App },
 })

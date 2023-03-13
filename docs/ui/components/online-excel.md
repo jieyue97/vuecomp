@@ -528,6 +528,9 @@
 </template>
 
 <script>
+  const validatePass = (data) => {
+    return { message: '不能为空', required: false, trigger: 'blur' }
+  }
   export default {
     name: 'gd_title_in',
     data() {
@@ -576,7 +579,7 @@
             prop: 'departmentName',
             rules: {
               check: { message: '不能为空', required: true },
-              validatePass: this.validatePass
+              validatePass: validatePass
             },
             label: '部门名称'
           },
@@ -605,20 +608,216 @@
       }
     },
     methods: {
-      validatePass(data) {
-        // 写判断逻辑
-        return { message: '不能为空', required: true }
+      
+    }
+  }
+</script>
+<style lang="scss" scoped>
+/deep/.el-excel-table {
+ .el-table .el-table__row {
+      .rules-table1 {
+      background-color: #d83552!important;
+    }
+  }
+}
+</style>
+```
+
+:::
+
+:::
+
+### 进阶用法-添加按钮
+
+-- autoBtnList, 新增加一个操作按钮，可自由新增。显示与隐藏按钮btnShowList属性, allCellHeight可设置单元格固定最低高度，默认为44
+
+-- 可自由操作
+
+::: demo
+
+```html
+<template>
+  <div>
+    <gd-online-excel
+      ref="tabExcel"
+      class="important-excel"
+      :data-table="tableData"
+      :columns-list="tableColumns"
+      @onSaveFold="onSaveFold"
+      :autoBtnList="autoBtnList"
+      :rulesClass="rulesClass"
+      :allCellHeight="88">
+    </gd-online-excel>
+  </div>
+</template>
+<script>
+  // 测试本地组件
+  const validatePass = (data) => {
+    if (data.row.nextJobContent) {
+      if (Number(data.row.nextJobContent) === 1) {
+        return { message: '不能为1', required: true }
+      }
+      if (data.row.nextJobContent === '2') {
+        return { message: '不能为2', required: true }
+      }
+      return { message: '不能为4', required: false }
+    } else {
+      return { message: '不能为空3', required: true }
+    }
+  }
+  export default {
+    name: "gd_online_excel",
+    data() {
+      return {
+        rulesClass: 'rules-table1',
+        tableData: [],
+        autoBtnList: [
+          {
+            label: '导入上一篇',
+            state: true,
+            icon: 'el-icon-document-add',
+            showName: 'updatePrevious',
+            falseIcon: '',
+            onClick: () => {
+              this.setUpdatePrevious()
+            }
+          }
+        ],
+        tableColumns: [
+          {
+            prop: 'deptName',
+            label: '部门'
+          },
+          {
+            prop: 'projectName',
+            label: '项目/产品/事项名称'
+          },
+          {
+            prop: 'manager',
+            rules: {
+              check: { message: '不能为空', required: true }
+            },
+            label: '负责人'
+          },
+          {
+            prop: 'projectGroupUser',
+            label: '项目组成员'
+          },
+          {
+            prop: 'progress',
+            label: '整体进度(%)'
+          },
+          {
+            prop: 'jobContent',
+            label: '完成工作内容',
+            editorType: 'date'
+          },
+          {
+            prop: 'nextJobContent',
+            label: '工作计划',
+            rules: {
+              check: { message: '不能为空', required: true }
+            },
+            editorValue: {
+              bind: {
+                type: 'textarea',
+                autosize: true
+              },
+              selectProp: {
+                value: 'value',
+                label: 'label'
+              }
+            }
+          },
+          {
+            prop: 'remark',
+            label: '问题及需要协调事项',
+            editorType: 'select',
+            editorValue: {
+              optionList: [
+                {
+                  label: 'hct',
+                  value: 'hctHtml'
+                },
+                {
+                  label: 'hbx',
+                  value: 'hbxHtml'
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    created() {
+      this.tableData = [
+        {
+          deptName: "基础研发部",
+          jobContent: "周报1",
+          manager: "管理员",
+          nextJobContent: "下周周报1dasd\ndljkadklas",
+          progress: 2,
+          projectGroupUser: "管理员,曾令令,吴灿,郝明才",
+          projectId: "1481197981918138369",
+          projectName: "郝测试",
+          remark: "待办事项1",
+          reportId: 1,
+          reportType: 0
+        },
+        {
+          deptName: "基础研发部",
+          jobContent: "周报1",
+          manager: "管理员",
+          nextJobContent: "下周周报1dasd\ndljkadklas",
+          progress: 2,
+          projectGroupUser: "管理员,曾令令,吴灿,郝明才",
+          projectId: "1481197981918138369",
+          projectName: "郝测试",
+          remark: "待办事项1",
+          reportId: 1,
+          reportType: 0
+        }
+      ]
+      this.tableData = [
+        {
+          deptName: "",
+          jobContent: "",
+          manager: "",
+          nextJobContent: "",
+          progress: '',
+          projectGroupUser: "",
+          projectId: "",
+          projectName: "",
+          remark: "",
+          reportId: "",
+          reportType: ''
+        }
+      ]
+    },
+    mounted() {},
+    methods: {
+      setUpdatePrevious() {
+      },
+      validateTable() {
+        this.$refs.tabExcel.validateTable((valid) => {})
+      },
+      onSaveFold(row, that) {
+        this.validateTable()
       }
     }
   }
 </script>
 <style lang="scss" scoped>
-  /deep/ .el-table .el-table__row {
-    .rules-table1 {
-      border: 1px solid #8503fb !important;
+  /deep/.el-excel-table {
+    .el-table .el-table__row{
+      .rules-table1{
+        background-color: #d83552!important;
+      }
     }
   }
-</style>
-```
 
+</style>
+
+```
 :::
+<mdtable mdname='onlineExcel'></mdtable>

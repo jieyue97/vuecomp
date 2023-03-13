@@ -1,11 +1,11 @@
 <template>
   <div v-show="editOpen" :class="editOpen ? 'showPrew' : ''">
     <!-- <el-drawer v-bind="$attrs" v-on="$listeners" @opened="onOpen" @close="onClose" :modal="false"> -->
-    <div style="height:100%">
-      <el-row style="height:100%;overflow:auto" ref="rowRef">
+    <div style="height: 100%">
+      <el-row style="height: 100%; overflow: auto" ref="rowRef">
         <el-col :md="24" :lg="24" class="left-editor">
           <!-- @click="showResource" -->
-          <div class="setting" title="资源引用">
+          <div class="setting" title="资源引用" v-if="!noSetting">
             <span class="tooSpan">
               <span class="bar-btn" @click="viewCode">
                 <i class="el-icon-view" />
@@ -23,9 +23,7 @@
                 <i class="el-icon-document-copy" />
                 复制代码
               </span>
-              <span class="bar-btn" @click="saveCode">
-                保存
-              </span>
+              <span class="bar-btn" @click="saveCode"> 保存 </span>
               <span class="bar-btn delete-btn" @click="onClose">
                 <i class="el-icon-circle-close" />
                 关闭
@@ -100,13 +98,13 @@ var editorObj = {
   html: null,
   js: null,
   EjS: null,
-  css: null
+  css: null,
 }
 const mode = {
   html: 'html',
   js: 'javascript',
   EjS: 'javascript',
-  css: 'css'
+  css: 'css',
 }
 let beautifier
 let monaco
@@ -116,6 +114,7 @@ export default {
   props: ['formData', 'generateConf', 'compData'],
   data() {
     return {
+      noSetting: false, // 展示保存等
       editOpen: false,
       isView: false,
       activeTab: 'html',
@@ -133,31 +132,31 @@ export default {
       vueTemplateObj: {
         html: '',
         css: '',
-        js: ''
-      }
+        js: '',
+      },
     }
   },
   computed: {
     resources() {
       return this.scripts.concat(this.links)
-    }
+    },
   },
   watch: {},
   created() {},
   mounted() {
     window.addEventListener('keydown', this.preventDefaultSave)
     const clipboard = new ClipboardJS('.copy-btn', {
-      text: trigger => {
+      text: (trigger) => {
         const codeStr = this.generateCode()
         this.$notify({
           title: '成功',
           message: '代码已复制到剪切板，可粘贴。',
-          type: 'success'
+          type: 'success',
         })
         return codeStr
-      }
+      },
     })
-    clipboard.on('error', e => {
+    clipboard.on('error', (e) => {
       this.$message.error('代码复制失败')
     })
   },
@@ -172,6 +171,16 @@ export default {
     // 点击span页签
     changeSapn(type) {
       this.activeTab = type
+    },
+    getCode() {
+      const jsCode = editorObj.js.getValue() !== '' ? editorObj.js.getValue().replace('export default', '') : editorObj.js.getValue()
+      const otherJsCode = editorObj.EjS.getValue() !== '' ? editorObj.EjS.getValue().replace('export default', '') : editorObj.EjS.getValue()
+      return {
+        htmlCode: editorObj.html.getValue(),
+        jsCode: jsCode,
+        cssCode: editorObj.css.getValue(),
+        otherJsCode: otherJsCode,
+      }
     },
     saveCode() {
       const jsCode = editorObj.js.getValue() !== '' ? editorObj.js.getValue().replace('export default', '') : editorObj.js.getValue()
@@ -196,6 +205,7 @@ export default {
       if (row === undefined) {
         return
       }
+      this.noSetting = row.noSetting
 
       const { type } = this.generateConf
       this.htmlCode = row.compView === '' ? defaultHtml() : row.compView
@@ -203,12 +213,12 @@ export default {
       this.cssCode = row.compCss === '' ? defaultCss() : row.compCss
       this.EjSCode = otherJsCode === '' ? 'export default {}' : otherJsCode
       // debugger
-      loadBeautifier(btf => {
+      loadBeautifier((btf) => {
         beautifier = btf
         this.htmlCode = beautifier.html(this.htmlCode, beautifierConf.html)
         this.jsCode = beautifier.js(this.jsCode, beautifierConf.js)
         this.cssCode = beautifier.css(this.cssCode, beautifierConf.html)
-        loadMonaco(val => {
+        loadMonaco((val) => {
           monaco = val
 
           this.setEditorValue('editorHtml', 'html', this.htmlCode, readOnlyHtml)
@@ -266,7 +276,7 @@ export default {
         theme: 'vs-dark',
         language: mode[type],
         automaticLayout: true,
-        readOnly: readOnlyType
+        readOnly: readOnlyType,
       })
       editorObj[type].setValue(codeStr)
       // }
@@ -276,7 +286,7 @@ export default {
       //   js: this.jsCode !== '' ? eval(`(${this.jsCode.replace(exportDefault, '')})`) : this.jsCode
       // }
       // ctrl + s 刷新
-      editorObj[type].onKeyDown(e => {
+      editorObj[type].onKeyDown((e) => {
         if (e.keyCode === 49 && (e.metaKey || e.ctrlKey)) {
           this.runCode()
         }
@@ -290,7 +300,7 @@ export default {
         const astBody = ast.program.body
         if (astBody.length > 1) {
           this.$confirm('js格式不能识别，仅支持修改export default的对象内容', '提示', {
-            type: 'warning'
+            type: 'warning',
           })
           return
         }
@@ -303,13 +313,13 @@ export default {
               js: jsCodeStr.replace(exportDefault, ''),
               css: editorObj.css.getValue(),
               scripts: this.scripts,
-              links: this.links
-            }
+              links: this.links,
+            },
           }
           this.vueTemplateObj = {
             html: editorObj.html.getValue(),
             css: editorObj.css.getValue(),
-            js: eval(`(${jsCodeStr.replace(exportDefault, '')})`)
+            js: eval(`(${jsCodeStr.replace(exportDefault, '')})`),
           }
         } else {
           this.$message.error('请使用export default')
@@ -345,7 +355,7 @@ export default {
       const scripts = []
       const links = []
       if (Array.isArray(arr)) {
-        arr.forEach(item => {
+        arr.forEach((item) => {
           if (item.endsWith('.css')) {
             links.push(item)
           } else {
@@ -358,8 +368,8 @@ export default {
         this.scripts = []
         this.links = []
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

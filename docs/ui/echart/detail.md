@@ -8,6 +8,7 @@
 - 直接传 options 参数就可以渲染图标
 - 支持 echart 的所有属性以及事件
 - 事件直接调用即可，如<gd-echart :width="'100%'" :height="'50%'" :options="options1" @click="">
+- 需要在使用的组件单独引入 import GdEchart from 'gd_vue_components/src/components_others/gd_echart'
 
 **基本用法**
 :::demo
@@ -28,11 +29,11 @@
       return {
         options2: {
           tooltip: {
-            trigger: 'item'
+            trigger: 'item',
           },
           legend: {
             top: '5%',
-            left: 'center'
+            left: 'center',
           },
           series: [
             {
@@ -43,87 +44,87 @@
               itemStyle: {
                 borderRadius: 10,
                 borderColor: '#fff',
-                borderWidth: 2
+                borderWidth: 2,
               },
               label: {
                 show: false,
-                position: 'center'
+                position: 'center',
               },
               emphasis: {
                 label: {
                   show: true,
                   fontSize: '40',
-                  fontWeight: 'bold'
-                }
+                  fontWeight: 'bold',
+                },
               },
               labelLine: {
-                show: false
+                show: false,
               },
               data: [
                 { value: 1048, name: '搜索引擎' },
                 { value: 735, name: '直接访问' },
                 { value: 580, name: '邮件营销' },
                 { value: 484, name: '联盟广告' },
-                { value: 300, name: '视频广告' }
-              ]
-            }
-          ]
+                { value: 300, name: '视频广告' },
+              ],
+            },
+          ],
         },
         options1: {
           tooltip: {
             trigger: 'axis',
             axisPointer: {
               // 坐标轴指示器，坐标轴触发有效
-              type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-            }
+              type: 'shadow', // 默认为直线，可选为：'line' | 'shadow'
+            },
           },
           grid: {
             left: '3%',
             right: '4%',
             bottom: '3%',
-            containLabel: true
+            containLabel: true,
           },
           xAxis: [
             {
               type: 'category',
               data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
               axisTick: {
-                alignWithLabel: true
-              }
-            }
+                alignWithLabel: true,
+              },
+            },
           ],
           yAxis: [
             {
-              type: 'value'
-            }
+              type: 'value',
+            },
           ],
           series: [
             {
               name: '直接访问',
               type: 'bar',
               barWidth: '60%',
-              data: [10, 52, 200, 334, 390, 330, 220]
-            }
-          ]
+              data: [10, 52, 200, 334, 390, 330, 220],
+            },
+          ],
         },
         options: {
           xAxis: {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
           },
           yAxis: {
-            type: 'value'
+            type: 'value',
           },
           series: [
             {
               data: [150, 230, 224, 218, 135, 147, 260],
-              type: 'line'
-            }
-          ]
-        }
+              type: 'line',
+            },
+          ],
+        },
       }
     },
-    methods: {}
+    methods: {},
   }
 </script>
 ```

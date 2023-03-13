@@ -4,9 +4,9 @@
     <div :style="{background: bgColor, borderColor: borderColor}" class="gd-title1" :class="[isPadding ? 'gd-padding-t-b-9' : '']">
       <el-row>
         <el-col :span="isRight ? 24 - Number(colSpan) : 24">
-          <slot name="label">
-            <span style="padding-left: 10px">{{ title }}</span>
+          <slot name="label" v-if="$slots.label">
           </slot>
+          <span style="padding-left: 10px" v-else>{{ title }}</span>
         </el-col>
         <el-col :span="isRight ? Number(colSpan) : 0" style="text-align: right; padding-right: 10px">
           <slot v-if="isRight" name="isRight"/>

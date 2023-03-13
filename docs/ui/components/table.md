@@ -8,6 +8,147 @@
 -- 支持远 elementui 的所有表格属性以及事件  
 -- 支持表格高度自适应 参数 bottom-offset:80 距离顶部的距离 fix-bottom:false 是否将表格固定在底部
 
+### 自动计算所要的条数
+
+-- 根据屏幕高度计算所要的条数 size，比如当默认十条数据不能填充满页面的情况<br>
+-- is-table-auto="true"设置该属性为 true 则支持该功能<br>
+-- row-height="44px"，可以通过该属性设置每行的高度，不设置默认为 44px<br>
+-- @getReallySize="getReallySize"回调函数，返回需要的条数 size
+
+::: demo
+
+```html
+<template>
+  <div>
+    <div class="demo_tables">
+      <gd-table
+        ref="gdtable"
+        :columns="tableColumn"
+        :data="tableData"
+        :hiddenPage="false"
+        :is-table-auto="true"
+        @getReallySize="getReallySize"
+        :border="border"
+        :total="total"
+        :stripe="stripe"
+        :pageParams="pageParams"
+        @pagination="setpagination"
+        :pageSizes="pageSizes"
+        :cell-style="{ paddingTop: '4px',paddingBottom: '4px' }"
+      >
+        <!-- 特殊的字段处理 -->
+        <template slot="dataServiceType" slot-scope="scope">
+          <span :style="{ color: scope.row.dataServiceType === 1 ? 'red' : 'blue' }">
+            <i :class="scope.row.dataServiceType === 1 ? 'el-icon-eleme' : 'el-icon-star-off'" />
+            {{ scope.row.dataServiceType === 1 ? '测试' : '车市2' }}
+          </span>
+        </template>
+        <template slot="caozuo" slot-scope="scope">
+          <div>
+            <el-button type="text" size="small"><i style="font-size:16px;padding-right:4px" class="el-icon-view"></i>查看</el-button>
+            <el-divider direction="vertical"></el-divider>
+            <el-button type="text" size="small"><i style="font-size:16px;padding-right:4px" class="el-icon-edit"></i>编辑</el-button>
+          </div>
+        </template>
+      </gd-table>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'gd_tabless',
+    data() {
+      return {
+        border: true,
+        stripe: false,
+        cellStyle: { padding: '0px' },
+        //表头数据
+        tableColumn: [
+          //序号 index  复选框 selection
+          { type: 'selection' },
+          { prop: 'name', label: '名称' },
+          { prop: 'districtName', label: '城市' },
+          { prop: 'dataServiceType', label: 'icon' },
+          { prop: 'caozuo', label: '操作' },
+        ],
+        //内容
+        tableData: [
+          {
+            id: '1413080704593432577',
+            name: 'sdfgsdfgssdf',
+            dataServiceType: 1,
+            secretGrade: -1,
+            districtName: '湛江市/廉江市',
+          },
+          {
+            id: '1413023861319323650',
+            name: '0708-test-1',
+            alias: '0708-test-1',
+            dataServiceType: 1,
+            districtName: '湛江市',
+            servicePublishParamVOList: [],
+          },
+          {
+            id: '1413023370535370753',
+            name: '0708-test-1',
+            dataServiceType: 1,
+            districtName: '湛江市',
+            servicePublishParamVOList: [],
+            subSourceUrl: '',
+            siteAddress: '',
+          },
+          {
+            id: '1413022989289930753',
+            name: '0708-test-1',
+            dataServiceType: 1,
+            districtName: '湛江市',
+            siteAddress: '',
+          },
+          {
+            id: '1413022167978098689',
+            name: '0708-test-1',
+            dataServiceType: 2,
+            districtName: '湛江市',
+          },
+        ],
+        total: 25,
+        pageParams: {
+          size: 5,
+          current: 1,
+        },
+        pageSizes: [2, 4, 5, 8, 10],
+      }
+    },
+    components: {},
+    mounted() {},
+    methods: {
+      getReallySize(num) {
+        this.pageParams.size = num
+        // 后面跟请求数据的接口
+      },
+      setpagination(val) {
+        console.log(val)
+      },
+      btn(val) {
+        console.log(val, this.$refs.gdtable.$refs.table)
+      },
+      onTotal(row) {
+        this.total = 5
+        if (!row) {
+          this.total = 0
+        }
+      },
+      onStripe(row) {
+        this.stripe = row
+      },
+    },
+  }
+</script>
+```
+
+:::
+
 ### 基础类型
 
 -- 表格样式从大类分类全边框、无边框的两类
@@ -73,7 +214,7 @@
           { prop: 'name', label: '名称' },
           { prop: 'districtName', label: '城市' },
           { prop: 'dataServiceType', label: 'icon' },
-          { prop: 'caozuo', label: '操作' }
+          { prop: 'caozuo', label: '操作' },
         ],
         //内容
         tableData: [
@@ -82,7 +223,7 @@
             name: 'sdfgsdfgssdf',
             dataServiceType: 1,
             secretGrade: -1,
-            districtName: '湛江市/廉江市'
+            districtName: '湛江市/廉江市',
           },
           {
             id: '1413023861319323650',
@@ -90,7 +231,7 @@
             alias: '0708-test-1',
             dataServiceType: 1,
             districtName: '湛江市',
-            servicePublishParamVOList: []
+            servicePublishParamVOList: [],
           },
           {
             id: '1413023370535370753',
@@ -99,28 +240,28 @@
             districtName: '湛江市',
             servicePublishParamVOList: [],
             subSourceUrl: '',
-            siteAddress: ''
+            siteAddress: '',
           },
           {
             id: '1413022989289930753',
             name: '0708-test-1',
             dataServiceType: 1,
             districtName: '湛江市',
-            siteAddress: ''
+            siteAddress: '',
           },
           {
             id: '1413022167978098689',
             name: '0708-test-1',
             dataServiceType: 2,
-            districtName: '湛江市'
-          }
+            districtName: '湛江市',
+          },
         ],
         total: 25,
         pageParams: {
           size: 5,
-          current: 1
+          current: 1,
         },
-        pageSizes: [2, 4, 5, 8, 10]
+        pageSizes: [2, 4, 5, 8, 10],
       }
     },
     components: {},
@@ -140,8 +281,8 @@
       },
       onStripe(row) {
         this.stripe = row
-      }
-    }
+      },
+    },
   }
 </script>
 ```
@@ -204,7 +345,7 @@
           { type: 'selection', align: 'left' },
           { prop: 'name', label: '名称', align: 'left' },
           { prop: 'districtName', label: '城市', align: 'left' },
-          { prop: 'dataServiceType', label: 'icon', align: 'left' }
+          { prop: 'dataServiceType', label: 'icon', align: 'left' },
         ],
         //内容
         tableData: [
@@ -213,7 +354,7 @@
             name: 'sdfgsdfgssdf',
             dataServiceType: 1,
             secretGrade: -1,
-            districtName: '湛江市/廉江市'
+            districtName: '湛江市/廉江市',
           },
           {
             id: '1413023861319323650',
@@ -221,7 +362,7 @@
             alias: '0708-test-1',
             dataServiceType: 1,
             districtName: '湛江市',
-            servicePublishParamVOList: []
+            servicePublishParamVOList: [],
           },
           {
             id: '1413023370535370753',
@@ -230,28 +371,28 @@
             districtName: '湛江市',
             servicePublishParamVOList: [],
             subSourceUrl: '',
-            siteAddress: ''
+            siteAddress: '',
           },
           {
             id: '1413022989289930753',
             name: '0708-test-1',
             dataServiceType: 1,
             districtName: '湛江市',
-            siteAddress: ''
+            siteAddress: '',
           },
           {
             id: '1413022167978098689',
             name: '0708-test-1',
             dataServiceType: 2,
-            districtName: '湛江市'
-          }
+            districtName: '湛江市',
+          },
         ],
         total: 0,
         pageParams: {
           size: 5,
-          current: 1
+          current: 1,
         },
-        pageSizes: [2, 4, 5, 8, 10]
+        pageSizes: [2, 4, 5, 8, 10],
       }
     },
     components: {},
@@ -273,8 +414,8 @@
         if (row === 'mixed') {
           this.tableColumn[1].align = this.tableColumn[1].align === 'center' ? 'left' : 'center'
         }
-      }
-    }
+      },
+    },
   }
 </script>
 ```
@@ -342,7 +483,7 @@
           delivery: false,
           type: [],
           resource: '',
-          desc: ''
+          desc: '',
         },
         tableData1: [
           {
@@ -356,10 +497,10 @@
                 date: '2016-05-02',
                 name: '王小虎',
                 children: [],
-                address: '上海市普陀区金沙江路 1518 弄'
-              }
+                address: '上海市普陀区金沙江路 1518 弄',
+              },
             ],
-            address: '上海市普陀区金沙江路 1518 弄'
+            address: '上海市普陀区金沙江路 1518 弄',
           },
           {
             id: 22222,
@@ -372,10 +513,10 @@
                 date: '2016-05-02',
                 name: '王小虎',
                 children: [],
-                address: '上海市普陀区金沙江路 1518 弄'
-              }
+                address: '上海市普陀区金沙江路 1518 弄',
+              },
             ],
-            address: '上海市普陀区金沙江路 1518 弄'
+            address: '上海市普陀区金沙江路 1518 弄',
           },
           {
             id: 17889,
@@ -388,16 +529,16 @@
                 date: '2016-05-02',
                 name: '王小虎',
                 children: [],
-                address: '上海市普陀区金沙江路 1518 弄'
-              }
+                address: '上海市普陀区金沙江路 1518 弄',
+              },
             ],
-            address: '上海市普陀区金沙江路 1518 弄'
+            address: '上海市普陀区金沙江路 1518 弄',
           },
           {
             id: 29999,
             date: '2016-05-04',
             name: '王小虎',
-            address: '上海市普陀区金沙江路 1517 弄'
+            address: '上海市普陀区金沙江路 1517 弄',
           },
           {
             id: 7886766,
@@ -409,22 +550,22 @@
                 id: 387686781,
                 date: '2016-05-01',
                 name: '王小虎',
-                address: '上海市普陀区金沙江路 1519 弄'
+                address: '上海市普陀区金沙江路 1519 弄',
               },
               {
                 id: 342342,
                 date: '2016-05-01',
                 name: '王小虎',
-                address: '上海市普陀区金沙江路 1519 弄'
-              }
-            ]
+                address: '上海市普陀区金沙江路 1519 弄',
+              },
+            ],
           },
           {
             id: 423424,
             date: '2016-05-03',
             name: '王小虎',
-            address: '上海市普陀区金沙江路 1516 弄'
-          }
+            address: '上海市普陀区金沙江路 1516 弄',
+          },
         ],
         border: true,
         //表头数据
@@ -432,14 +573,14 @@
           //序号 index  复选框 selection
           { prop: 'name', label: '名称' },
           { prop: 'date', label: '时间' },
-          { prop: 'address', label: '地点' }
+          { prop: 'address', label: '地点' },
         ],
         total: 25,
         pageParams: {
           size: 3,
-          current: 1
+          current: 1,
         },
-        pageSizes: [2, 4, 5, 8, 10]
+        pageSizes: [2, 4, 5, 8, 10],
       }
     },
     components: {},
@@ -453,7 +594,7 @@
           //序号 index  复选框 selection
           { prop: 'name', label: '名称' },
           { prop: 'date', label: '时间' },
-          { prop: 'address', label: '地点' }
+          { prop: 'address', label: '地点' },
         ]
         // 固定表头，超出高度表头固定
         if (row === 'height') {
@@ -469,14 +610,14 @@
         }
         // 排序
         if (row === 'sort') {
-          this.tableColumn = this.tableColumn.map(item => {
+          this.tableColumn = this.tableColumn.map((item) => {
             item['sortable'] = true
             return item
           })
         }
 
         if (row === 'numHeader') {
-          this.tableColumn = this.tableColumn.map(item => {
+          this.tableColumn = this.tableColumn.map((item) => {
             item['children'] = [{ prop: 'name', label: '名称1' }]
             return item
           })
@@ -485,8 +626,8 @@
         if (row === 'operate') {
           this.tableColumn.push({ prop: 'operate', label: '操作', width: '200' })
         }
-      }
-    }
+      },
+    },
   }
 </script>
 ```
@@ -538,7 +679,7 @@
           { prop: 'name', label: '名称', align: 'left' },
           { prop: 'districtName', label: '城市', align: 'left' },
           { prop: 'dataServiceType', label: 'icon', align: 'left' },
-          { prop: 'caozuo', label: '操作', align: 'left' }
+          { prop: 'caozuo', label: '操作', align: 'left' },
         ],
         tableColumn1: [
           //序号 index  复选框 selection
@@ -546,7 +687,7 @@
           { prop: 'name', label: '名称1', align: 'left' },
           { prop: 'districtName', label: '城市1', align: 'left' },
           { prop: 'dataServiceType', label: 'icon1', align: 'left' },
-          { prop: 'caozuo', label: '操作1', align: 'left' }
+          { prop: 'caozuo', label: '操作1', align: 'left' },
         ],
         //内容
         tableData: [
@@ -555,7 +696,7 @@
             name: 'sdfgsdfgssdf',
             dataServiceType: 1,
             secretGrade: -1,
-            districtName: '湛江市/廉江市'
+            districtName: '湛江市/廉江市',
           },
           {
             id: '1413023861319323650',
@@ -563,9 +704,9 @@
             alias: '0708-test-1',
             dataServiceType: 1,
             districtName: '湛江市',
-            servicePublishParamVOList: []
-          }
-        ]
+            servicePublishParamVOList: [],
+          },
+        ],
       }
     },
     components: {},
@@ -573,8 +714,8 @@
     methods: {
       setpagination(val) {
         console.log(val)
-      }
-    }
+      },
+    },
   }
 </script>
 ```
@@ -592,6 +733,15 @@
   <div>
     <div class="demo_tables">
       <gd-table ref="gdtable" :columns="tableColumn" :align="align" :data="tableData" :border="border" :stripe="stripe" :cell-style="{ paddingTop: '10px',paddingBottom: '10px' }">
+        <!-- 头部插槽和多级表头的插槽要在组件库版本@0.4.39及以上才能使用 -->
+        <!-- <template slot="district_handle" slot-scope="scope">
+            这个是头部插槽
+            {{scope.row}}
+          </template> -->
+        <!-- <template slot="timeDimension" slot-scope="scope">
+            这个多级表头的插槽，对象里面设置slotFlag: true即可
+            {{scope.row}}
+          </template> -->
       </gd-table>
     </div>
   </div>
@@ -621,25 +771,25 @@
                   {
                     label: '三级表头1',
                     prop: 'district1',
-                    align: 'left'
+                    align: 'left',
                   },
                   {
                     label: '三级表头2',
                     prop: 'timeDimension2',
-                    align: 'right'
-                  }
-                ]
+                    align: 'right',
+                  },
+                ],
               },
               {
                 label: '二级表头2',
                 prop: 'timeDimension',
-                align: 'center'
-              }
-            ]
+                align: 'center',
+              },
+            ],
           },
           { prop: 'districtName', label: '城市' },
           { prop: 'dataServiceType', label: 'icon' },
-          { prop: 'caozuo', label: '操作' }
+          { prop: 'caozuo', label: '操作' },
         ],
         //内容
         tableData: [
@@ -652,7 +802,7 @@
             district1: 12,
             timeDimension: 13,
             timeDimension2: 20,
-            districtName: '湛江市/廉江市'
+            districtName: '湛江市/廉江市',
           },
           {
             id: '1413023861319323650',
@@ -664,14 +814,14 @@
             district1: 12,
             timeDimension: 13,
             timeDimension2: 20,
-            servicePublishParamVOList: []
-          }
-        ]
+            servicePublishParamVOList: [],
+          },
+        ],
       }
     },
     components: {},
     mounted() {},
-    methods: {}
+    methods: {},
   }
 </script>
 ```
@@ -689,6 +839,13 @@
   <div>
     <div class="demo_tables">
       <gd-table ref="gdtable" :columns="tableColumn" :align="align" :data="tableData" :border="border" :stripe="stripe" :cell-style="{ paddingTop: '10px',paddingBottom: '10px' }">
+        <!-- 在prop为districtName的配置上加上isHeader:true即可配置头部 -->
+
+        <!-- 头部插槽 -->
+        <template slot="districtName_handle">
+          <el-tag>123</el-tag>
+        </template>
+        <!-- 正常插槽 -->
         <template slot="districtName">
           <el-tag>123</el-tag>
         </template>
@@ -711,11 +868,11 @@
           { type: 'selection' },
           {
             prop: 'name',
-            label: '名称'
+            label: '名称',
           },
           { prop: 'districtName', label: '城市', isHeader: true },
           { prop: 'dataServiceType', label: 'icon' },
-          { prop: 'caozuo', label: '操作' }
+          { prop: 'caozuo', label: '操作' },
         ],
         //内容
         tableData: [
@@ -728,7 +885,7 @@
             district1: 12,
             timeDimension: 13,
             timeDimension2: 20,
-            districtName: '湛江市/廉江市'
+            districtName: '湛江市/廉江市',
           },
           {
             id: '1413023861319323650',
@@ -740,14 +897,14 @@
             district1: 12,
             timeDimension: 13,
             timeDimension2: 20,
-            servicePublishParamVOList: []
-          }
-        ]
+            servicePublishParamVOList: [],
+          },
+        ],
       }
     },
     components: {},
     mounted() {},
-    methods: {}
+    methods: {},
   }
 </script>
 ```
@@ -797,11 +954,11 @@
           { type: 'selection' },
           {
             prop: 'name',
-            label: '名称'
+            label: '名称',
           },
           { prop: 'districtName', label: '城市', isHeader: true },
           { prop: 'dataServiceType', label: 'icon' },
-          { prop: 'caozuo', label: '操作' }
+          { prop: 'caozuo', label: '操作' },
         ],
         //内容
         tableData: [
@@ -814,7 +971,7 @@
             district1: 12,
             timeDimension: 13,
             timeDimension2: 20,
-            districtName: '湛江市/廉江市'
+            districtName: '湛江市/廉江市',
           },
           {
             id: '1413023861319323650',
@@ -826,14 +983,14 @@
             district1: 12,
             timeDimension: 13,
             timeDimension2: 20,
-            servicePublishParamVOList: []
-          }
-        ]
+            servicePublishParamVOList: [],
+          },
+        ],
       }
     },
     components: {},
     mounted() {},
-    methods: {}
+    methods: {},
   }
 </script>
 ```
@@ -891,9 +1048,7 @@
       @onChangeTreeTable="onChangeTreeTable"
       :pageSizes="pageSizes"
     >
-      <template slot="date" slot-scope="scope">
-        {{scope.row.date}}
-      </template>
+      <template slot="date" slot-scope="scope"> {{scope.row.date}} </template>
     </gd-check-table> -->
   </div>
 </template>
@@ -910,7 +1065,7 @@
           { prop: 'date', label: '日期' },
           { prop: 'name', label: '名称' },
           { prop: 'address', label: '地址' },
-          { prop: 'caozuo', label: '操作' }
+          { prop: 'caozuo', label: '操作' },
         ],
         tableData: [
           {
@@ -918,14 +1073,14 @@
             level: 1,
             date: '2016-05-02',
             name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
+            address: '上海市普陀区金沙江路 1518 弄',
           },
           {
             id: 2,
             level: 1,
             date: '2016-05-04',
             name: '王小虎',
-            address: '上海市普陀区金沙江路 1517 弄'
+            address: '上海市普陀区金沙江路 1517 弄',
           },
           {
             id: 3,
@@ -956,18 +1111,18 @@
                             level: 5,
                             date: '2016-05-01',
                             name: '王小虎',
-                            address: '上海市普陀区金沙江路 1519 弄'
+                            address: '上海市普陀区金沙江路 1519 弄',
                           },
                           {
                             id: 32222,
                             level: 5,
                             date: '2016-05-01',
                             name: '王小虎',
-                            address: '上海市普陀区金沙江路 1519 弄'
-                          }
+                            address: '上海市普陀区金沙江路 1519 弄',
+                          },
                         ],
                         name: '王小虎',
-                        address: '上海市普陀区金沙江路 1519 弄'
+                        address: '上海市普陀区金沙江路 1519 弄',
                       },
                       {
                         id: 322222,
@@ -986,65 +1141,65 @@
                                 level: 6,
                                 date: '2016-05-01',
                                 name: '王小虎',
-                                address: '上海市普陀区金沙江路 1519 弄'
+                                address: '上海市普陀区金沙江路 1519 弄',
                               },
                               {
                                 id: 312662,
                                 date: '2016-05-01',
                                 name: '王小虎',
                                 level: 6,
-                                address: '上海市普陀区金沙江路 1519 弄'
-                              }
+                                address: '上海市普陀区金沙江路 1519 弄',
+                              },
                             ],
                             name: '王小虎',
-                            address: '上海市普陀区金沙江路 1519 弄'
+                            address: '上海市普陀区金沙江路 1519 弄',
                           },
                           {
                             id: 3299,
                             level: 5,
                             date: '2016-05-01',
                             name: '王小虎',
-                            address: '上海市普陀区金沙江路 1519 弄'
-                          }
-                        ]
-                      }
-                    ]
+                            address: '上海市普陀区金沙江路 1519 弄',
+                          },
+                        ],
+                      },
+                    ],
                   },
                   {
                     id: 3772,
                     date: '2016-05-01',
                     name: '王小虎',
-                    address: '上海市普陀区金沙江路 1519 弄'
-                  }
+                    address: '上海市普陀区金沙江路 1519 弄',
+                  },
                 ],
                 name: '王小虎',
-                address: '上海市普陀区金沙江路 1519 弄'
+                address: '上海市普陀区金沙江路 1519 弄',
               },
               {
                 id: 32000,
                 level: 2,
                 date: '2016-05-01',
                 name: '王小虎',
-                address: '上海市普陀区金沙江路 1519 弄'
-              }
-            ]
+                address: '上海市普陀区金沙江路 1519 弄',
+              },
+            ],
           },
           {
             id: 4,
             level: 1,
             date: '2016-05-03',
             name: '王小虎',
-            address: '上海市普陀区金沙江路 1516 弄'
-          }
+            address: '上海市普陀区金沙江路 1516 弄',
+          },
         ],
         border: true,
         stripe: false,
         total: 25,
         pageParams: {
           size: 5,
-          current: 1
+          current: 1,
         },
-        pageSizes: [2, 4, 5, 8, 10]
+        pageSizes: [2, 4, 5, 8, 10],
       }
     },
     mounted() {},
@@ -1069,8 +1224,8 @@
         // }])
         // 或者
         this.$refs.gdtable.setCheckedKeys([4, 32000])
-      }
-    }
+      },
+    },
   }
 </script>
 ```

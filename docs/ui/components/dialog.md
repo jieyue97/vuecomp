@@ -47,7 +47,7 @@
         prinftShow: false,
         maximized: false,
         themeColor: '#fff',
-        titleColor: '#000'
+        titleColor: '#000',
       }
     },
     components: {
@@ -63,8 +63,8 @@
         } else {
           this.titleColor = '#fff'
         }
-      }
-    }
+      },
+    },
   }
 </script>
 ```
@@ -108,12 +108,12 @@
       return {
         prinftShow: false,
         maximized: false,
-        size: 'default'
+        size: 'default',
       }
     },
     components: {
       // GdDialog
-    }
+    },
   }
 </script>
 ```
@@ -168,12 +168,12 @@
       return {
         prinftShow: false,
         maximized: false,
-        btnTextAlign: 'center'
+        btnTextAlign: 'center',
       }
     },
     components: {
       // GdDialog
-    }
+    },
   }
 </script>
 ```
@@ -223,7 +223,7 @@
         text: '成功',
         isNum: 0,
         icons: ['el-icon-success', 'el-icon-error', 'el-icon-warning'],
-        colors: ['#67C23A', '#FF5E5E', '#F69E1B']
+        colors: ['#67C23A', '#FF5E5E', '#F69E1B'],
       }
     },
     components: {
@@ -234,8 +234,8 @@
         this.text = text
         this.isNum = num
         this.prinftShow = true
-      }
-    }
+      },
+    },
   }
 </script>
 ```

@@ -19,7 +19,7 @@
 const cacheCity = {}
 const cacheProvince = {}
 function importAll(r, cache) {
-  r.keys().forEach((key) => {
+  r.keys().forEach(key => {
     cache[key] = key
   })
 }
@@ -35,39 +35,39 @@ export default {
       option: [
         {
           label: '国家',
-          list: [{ alias: '中国', url: 'geo/china.json', href: '/vuepressblog/geo/china.json' }],
+          list: [{ alias: '中国', url: 'geo/china.json', href: '/gdui/geo/china.json' }]
         },
         {
           label: '省',
-          list: Object.keys(cacheProvince).map((item) => {
+          list: Object.keys(cacheProvince).map(item => {
             const temp = {}
             temp['id'] = item.substring(2)
-            const province = mapCity.find((item) => item.geo.split('/')[1] == temp['id'])
+            const province = mapCity.find(item => item.geo.split('/')[1] == temp['id'])
             temp['alias'] = province?.name
             temp['url'] = `geo/province/${item.substring(2)}`
-            temp['href'] = `/vuepressblog/geo/province/${item.substring(2)}`
+            temp['href'] = `/gdui/geo/province/${item.substring(2)}`
             return temp
-          }),
+          })
         },
         {
           label: '市',
-          list: Object.keys(cacheCity).map((item) => {
+          list: Object.keys(cacheCity).map(item => {
             const temp = {}
             temp['id'] = item.substring(2).split('.')[0]
-            const city = mapCity.find((item) => item.id == temp['id'])
+            const city = mapCity.find(item => item.id == temp['id'])
             temp['alias'] = city?.name || mapCityPlus[temp['id']]
             temp['url'] = `geo/city/${item.substring(2)}`
-            temp['href'] = `/vuepressblog/geo/city/${item.substring(2)}`
+            temp['href'] = `/gdui/geo/city/${item.substring(2)}`
             return temp
-          }),
-        },
-      ],
+          })
+        }
+      ]
     }
   },
   components: {},
   created() {},
   mounted() {},
-  methods: {},
+  methods: {}
 }
 </script>
 <style lang="scss" scoped>

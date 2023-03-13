@@ -2,17 +2,19 @@
   <div class="el-excel-table">
     <div style="margin-bottom: 10px">
       <div style="padding-left: 10px">
-        <template v-for="(item, index) in btnList">
-          <el-button
-            v-if="item.label !== '|' && isShowBtn(btnShowList, item.showName)"
-            :key="item.label + index"
-            :title="item.label"
-            type="text"
-            @click="item.onClick()">
-            <i :class="item.icon"/>
-          </el-button>
-          <span v-if="item.label === '|'" :key="item.label + index" style="color: #c6c6c6">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-        </template>
+        <slot name="button">
+          <template v-for="(item, index) in btnList">
+            <el-button
+              v-if="item.label !== '|' && isShowBtn(btnShowList, item.showName)"
+              :key="item.label + index"
+              :title="item.label"
+              type="text"
+              @click="item.onClick()">
+              <i :class="item.icon"/>
+            </el-button>
+            <span v-if="item.label === '|'" :key="item.label + index" style="color: #c6c6c6">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+          </template>
+        </slot>
       </div>
     </div>
     <el-table
@@ -209,6 +211,7 @@ export default {
           falseIcon: '',
           onClick: () => {
             this.$emit('onUpdateload')
+            this.$emit('onUpdateLoad')
           }
         },
         {
@@ -274,10 +277,35 @@ export default {
         17: false,
         89: false,
         90: false
-      } // 键盘按下参数存取
+      }, // 键盘按下参数存取
+      dateFilterDate: [/^((?:19|20)\d\d)\.([1-9]|0[1-9]|1[012])\.([1-9]|0[1-9]|[12][0-9]|3[01])$/, /^((?:19|20)\d\d)\/([1-9]|0[1-9]|1[012])\/([1-9]|0[1-9]|[12][0-9]|3[01])$/, /^((?:19|20)\d\d)-([1-9]|0[1-9]|1[012])-([1-9]|0[1-9]|[12][0-9]|3[01])$/]
     }
   },
   computed: {
+    // 时间转换器
+    setDateFilter() {
+      return (name, typeList) => {
+        let val = ''
+        for (const i in typeList) {
+          const item = typeList[i]
+          if (item.test(name)) {
+            val = Number(i) === 0 ? name.replace(/\./g, '-') : Number(i) === 2 ? name : name.replace(/\//g, '-')
+            break
+          }
+        }
+        if (val) {
+          const list = val.split('-')
+          // 补零
+          for (let i in list) {
+            if (list[i].length === 1) {
+              list[i] = '0' + list[i]
+            }
+          }
+          val = list.join('-')
+        }
+        return val
+      }
+    },
     isRulesHeader() {
       return (row, list) => {
         const arr = list.filter(item => item.prop === row.property)
@@ -505,14 +533,17 @@ export default {
       const index = this.isIndex ? columnIndex - 1 : columnIndex
       if ((columnIndex && this.isIndex) || !this.isIndex) {
         // 监测校验
-        // const rulesClass =
-        this.setCheckRules(row[column.property], this.tableColumns[index], { row, column, rowIndex, columnIndex })
+        const rulesClass = this.setCheckRules(row[column.property], this.tableColumns[index], { row, column, rowIndex, columnIndex })
         let readyClass = ''
+        if (rulesClass) {
+          readyClass = rulesClass
+        }
         // 全表/单列只读
         if (this.readyTable || this.tableColumns[index]['ready']) {
-          readyClass = this.readyClass || 'warning-row'
+          return this.readyClass || 'warning-row'
         }
         return readyClass
+
       }
     },
     setCheckRules(row, res, data) {
@@ -597,7 +628,7 @@ export default {
     },
     // copy excel数据拆分行
     setSplitRow(content) {
-      const rows = content.split('\r\n') // 拆成很多行
+      const rows = content.split('\r\n') // 拆分成多行
       this.setSplitCol(rows)
     },
     // 将行数据拆分成行
@@ -617,9 +648,9 @@ export default {
             obj[this.tableColumn[columnIndex]] = ''
             if (columnIndex <= (this.tableColumn.length - 1)) {
               if (this.tableData[rowIndex]) {
-                this.tableData[rowIndex][this.tableColumn[columnIndex]] = columns[i] || this.tableData[rowIndex][this.tableColumn[columnIndex]]
+                this.tableData[rowIndex][this.tableColumn[columnIndex]] = this.changeDateType(this.tableColumn[columnIndex], columns[i], rowIndex) || this.tableData[rowIndex][this.tableColumn[columnIndex]]
               } else {
-                obj[this.tableColumn[columnIndex]] = columns[i]
+                obj[this.tableColumn[columnIndex]] = this.changeDateType(this.tableColumn[columnIndex], columns[i], rowIndex)
               }
             }
             columnIndex++
@@ -633,6 +664,42 @@ export default {
       }
       this.addTableAll()
       this.resetSpan()
+    },
+    // 分析数据类型, date类型执行过滤与转换数据
+    changeDateType(prop, colVal, row) {
+      let val = colVal
+      let arr = this.tableColumns.filter(item => item.prop === prop)
+      if (arr.length) {
+        if (arr[0]?.editorType === 'date' && val) {
+          let isFalse = false
+          for (const i in this.dateFilterDate) {
+            const item = this.dateFilterDate[i]
+            if (item.test(colVal)) {
+              val = Number(i) === 0 ? colVal.replace(/\./g, '-') : Number(i) === 2 ? colVal : colVal.replace(/\//g, '-')
+              isFalse = true
+              break
+            }
+          }
+          if (!isFalse) {
+            this.$notify.error({
+              title: '错误',
+              message: `第${(row + 1)}行,《${arr[0].label}》列,日期格式输入有误。`,
+            })
+          } else {
+            if (val) {
+              const list = val.split('-')
+              // 补零
+              for (let i in list) {
+                if (list[i].length === 1) {
+                  list[i] = '0' + list[i]
+                }
+              }
+              val = list.join('-')
+            }
+          }
+        }
+      }
+      return val
     },
     // 监测数组是否有数据
     checkTableData(content) {
@@ -769,8 +836,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/deep/
-.el-table .el-table__row{
+/deep/.el-table .el-table__row{
   .warning-row {
     background: #fdf7e6 !important;
   }
@@ -779,8 +845,7 @@ export default {
   }
 }
 .el-excel-table {
-  /deep/
-  .el-table .el-table__row{
+  /deep/.el-table .el-table__row{
     .el-table__cell{
       padding: 0px!important;
     }
@@ -788,13 +853,11 @@ export default {
       padding: 0px!important;
     }
   }
-  /deep/
-  .el-table .el-table__row .cell{
+  /deep/.el-table .el-table__row .cell{
     padding: 0px!important;
   }
 }
-/deep/
-.paster-text{
+/deep/.paster-text{
   .el-input__inner, .el-textarea__inner{
     border:1px dashed #409EFF!important;
     outline: 0;

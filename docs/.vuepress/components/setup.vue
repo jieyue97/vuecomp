@@ -2,20 +2,18 @@
   <div class="my-setup">
     <div class="info-body">
       <div class="left-panner">
-        <div class="title">前端开发组件库</div>
-        <div class="title">项目快速成型工具</div>
-        <div class="info-content-first">GdWeb，一套为前端开发者准备的基于Vue的项目工程化方案。</div>
+        <div class="title">GuoDi在线辅助平台</div>
+        <div class="info-content-first">项目快速成型工具</div>
         <div class="info-content">
-          多年来沉淀了不少关于项目设计开发的的经验和方法，我将这些经验总结起来形成一些稳定且复用性高的内容，搭建一套服务于项目的设计开发模式，希望可以帮助大家提高产品设计和研发效率。
+          国地科技多年来沉淀了不少关于项目设计开发的的经验和方法，我们将这些经验总结起来形成一些稳定且复用性高的内容，搭建一套服务于项目的设计开发模式，希望可以帮助大家提高产品设计和研发效率。
         </div>
         <div style="margin-top: 50px">
           <el-button type="primary" @click="startBtn"> 开始使用 </el-button>
-          <el-button @click="useGuideBtn"> 使用指南 </el-button>
         </div>
       </div>
       <div class="right-panner">
         <slot>
-          <img src="/vuepressblog/img/shouye.png" alt="" />
+          <img src="/gdui/img/shouye.png" alt="" />
         </slot>
       </div>
     </div>
@@ -37,7 +35,7 @@ export default {
     useGuideBtn() {
       this.$router.push('/guide/useFlow')
     },
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>

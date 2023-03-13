@@ -1,10 +1,10 @@
 <template>
   <div>
-    <template v-for="item in option"
-      ><div style="padding-bottom: 10px" class="title">
+    <template v-for="item in option">
+      <div style="padding-bottom: 10px" class="title">
         {{ item.title }}
       </div>
-      <div style="margin-bottom:15px">{{ item.subtitle }}</div>
+      <div style="margin-bottom: 15px">{{ item.subtitle }}</div>
       <div class="demo_tables">
         <gd-table
           ref="gdtable"
@@ -18,6 +18,10 @@
           <template slot="name" slot-scope="scope">
             <span class="gdtable_row">{{ scope.row.name }}</span>
           </template>
+          <template slot="desc" slot-scope="scope">
+            <el-input readonly v-if="scope.row.descRow" type="textarea" :rows="scope.row.descRow" placeholder="请输入内容" v-model="scope.row.desc"> </el-input>
+            <span v-else>{{ scope.row.desc }}</span>
+          </template>
         </gd-table>
       </div></template
     >
@@ -30,12 +34,12 @@ export default {
   props: {
     mdname: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     return {
-      option: []
+      option: [],
     }
   },
   components: {},
@@ -43,7 +47,7 @@ export default {
     this.option = require(`./data/${this.mdname}.js`)
   },
   mounted() {},
-  methods: {}
+  methods: {},
 }
 </script>
 <style lang="scss" scoped>

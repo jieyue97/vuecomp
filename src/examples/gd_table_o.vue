@@ -1,148 +1,76 @@
 <template>
   <div>
-    <el-table
-      :data="tableData"
-      style="width: 100%;margin-bottom: 20px;"
-      row-key="id"
-      border
-      default-expand-all
-      ref="multipleTable"
-      @select="rowSelect"
-      @select-all="selectAll"
-      :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
-      <el-table-column
-        type="selection"
-        width="55">
-      </el-table-column>
-      <el-table-column
-        prop="date"
-        label="日期"
-        sortable>
-        <template slot-scope="scope">
-          <el-checkbox :indeterminate="true" v-model="scope.row.checked"></el-checkbox>
-          <span>{{scope.row.date}}</span>
+    <div class="demo_tables">
+      <gd-header
+        ref="gdtable"
+        :columns="tableColumn"
+        :align="align"
+        :data="tableData"
+        :border="border"
+        :stripe="stripe"
+        :cell-style="{ paddingTop: '10px', paddingBottom: '10px' }"
+      >
+        <template slot="districtName">
+          <el-tag>123</el-tag>
         </template>
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="姓名"
-        sortable
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="地址">
-      </el-table-column>
-    </el-table>
+      </gd-header>
+    </div>
   </div>
 </template>
 
 <script>
+import GdHeader from '../components/gd_table'
 export default {
-  name: "gd_table_o",
+  name: 'gd_tabless_o',
+  components: { GdHeader },
   data() {
     return {
+      border: true,
+      stripe: false,
+      align: 'left',
+      //表头数据
+      tableColumn: [
+        //序号 index  复选框 selection
+        { type: 'selection' },
+        {
+          prop: 'name',
+          label: '名称',
+        },
+        { prop: 'districtName', label: '城市' },
+        { prop: 'dataServiceType', label: 'icon' },
+        { prop: 'caozuo', label: '操作' }
+      ],
+      //内容
       tableData: [
         {
-        id: 1,
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        id: 2,
-        date: '2016-05-04',
-          name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        id: 3,
-        date: '2016-05-01',
-        name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄',
-        children: [
-          {
-          id: 31,
-          date: '2016-05-01',
-          children: [{
-            id: 311,
-            date: '2016-05-01',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1519 弄',
-            children: [
-              {
-                id: 31111,
-                date: '2016-05-01',
-                children: [{
-                  id: 31222,
-                  date: '2016-05-01',
-                  name: '王小虎',
-                  address: '上海市普陀区金沙江路 1519 弄'
-                }, {
-                  id: 32222,
-                  date: '2016-05-01',
-                  name: '王小虎',
-                  address: '上海市普陀区金沙江路 1519 弄'
-                }],
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1519 弄'
-              },
-              {
-                id: 322222,
-                date: '2016-05-01',
-                name: '王小虎',
-                address: '上海市普陀区金沙江路 1519 弄',
-                children: [
-                  {
-                    id: 333431,
-                    date: '2016-05-01',
-                    children: [{
-                      id: 3432421,
-                      date: '2016-05-01',
-                      name: '王小虎',
-                      address: '上海市普陀区金沙江路 1519 弄'
-                    }, {
-                      id: 312662,
-                      date: '2016-05-01',
-                      name: '王小虎',
-                      address: '上海市普陀区金沙江路 1519 弄'
-                    }],
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1519 弄'
-                  },
-                  {
-                    id: 3299,
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1519 弄'
-                  }
-                ]
-              }
-            ]
-          }, {
-            id: 3772,
-            date: '2016-05-01',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1519 弄'
-          }],
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }]
-      }, {
-        id: 4,
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }
+          id: '1413080704593432577',
+          name: 'sdfgsd阿打发打开了sfkaksdfgssd【拉夫罗夫：核战争风险真实存在 其危险性不可低估】财联社4月26日电，俄罗斯外长拉夫罗夫当地时间25日接受俄罗斯媒体采访时说，核战争风险真实存在，其危险性不可低估。拉夫罗夫同时强调，核战争是不可接受的，这是俄罗斯的原则立场。f',
+          dataServiceType: 1,
+          secretGrade: -1,
+          district: 12,
+          district1: 12,
+          timeDimension: 13,
+          timeDimension2: 20,
+          districtName: '湛江市/廉江市'
+        },
+        {
+          id: '1413023861319323650',
+          name: 'test-1',
+          alias: '0708-test-1',
+          dataServiceType: 1,
+          districtName: '湛江市',
+          district: 12,
+          district1: 12,
+          timeDimension: 13,
+          timeDimension2: 20,
+          servicePublishParamVOList: []
+        }
       ]
     }
   },
-  components: {
-  },
-  methods: {
-
-  }
+  mounted() { },
+  methods: {}
 }
 </script>
-
-<style scoped>
-
+<style lang="scss" scoped>
 </style>

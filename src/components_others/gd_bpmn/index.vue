@@ -118,17 +118,17 @@
 <script>
 import BpmnModeler from 'bpmn-js/lib/Modeler' // 引入 bpmn-js
 // 模拟流转流程
-import tokenSimulation from 'tl-hh-bpmn-js-simulation';
+import tokenSimulation from 'tl-hh-bpmn-js-simulation'
 import minimapModule from 'diagram-js-minimap' // 引入 小地图
-import "diagram-js-minimap/assets/diagram-js-minimap.css";
+import 'diagram-js-minimap/assets/diagram-js-minimap.css'
 // import customPalette from './palette'
 import customModule from './palette'
-import BpmData from "./palette/BpmData"
-import NodePropertyPanel from "./NodePropertyPanel"; // 属性面板
-import ProcessPropertyPanel from "./ProcessPropertyPanel";
+import BpmData from './palette/BpmData'
+import NodePropertyPanel from './NodePropertyPanel' // 属性面板
+import ProcessPropertyPanel from './ProcessPropertyPanel'
 // 翻译方法
-import customTranslate from "./translate/Translate";
-import translationsCN from "./translate/TranslationsGerman";
+import customTranslate from './translate/Translate'
+import translationsCN from './translate/TranslationsGerman'
 
 // 其他工具
 import vkbeautify from 'vkbeautify'
@@ -138,13 +138,13 @@ import Hljs from 'highlight.js'
 import 'highlight.js/styles/atom-one-dark.css'
 
 /*左边工具栏以及编辑节点的样式*/
-import 'bpmn-js/dist/assets/diagram-js.css';
-import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css';
-import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css';
-import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css';
+import 'bpmn-js/dist/assets/diagram-js.css'
+import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
+import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css'
+import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
 
 //引入 在线编辑工具 以及美化代码工具
-import MonacoEditor from 'vue-monaco-editor';
+import MonacoEditor from 'vue-monaco-editor'
 let bpmnText = ''
 
 export default {
@@ -157,15 +157,15 @@ export default {
     },
     processName: {
       type: String,
-      default: '流程gd-flow',
+      default: '流程gd-flow'
     },
     processKey: {
       type: String,
-      default: 'processGdKeys',
+      default: 'processGdKeys'
     },
     processDescription: {
       type: String,
-      default: '',
+      default: ''
     },
     // 流程其他屬性初始值
     processOtherForm: {
@@ -181,7 +181,7 @@ export default {
     },
     bpmnXmlStr: {
       type: String,
-      default: '',
+      default: ''
     },
     flowHeight: {
       type: String,
@@ -227,7 +227,7 @@ export default {
         return {
           id: 'id',
           label: 'label',
-          children: 'children',
+          children: 'children'
         }
       }
     }
@@ -238,12 +238,12 @@ export default {
     vkbeautify,
     MonacoEditor
   },
-  name: "GdBpmn",
+  name: 'GdBpmn',
   // 自定义指令
   directives: {
-    highlight: (el) => {
-      let blocks = el.querySelectorAll('pre code');
-      blocks.forEach((block) => {
+    highlight: el => {
+      let blocks = el.querySelectorAll('pre code')
+      blocks.forEach(block => {
         Hljs.highlightBlock(block)
       })
     }
@@ -252,14 +252,14 @@ export default {
     return {
       //模拟运行按钮状态
       simulationStatus: false,
-      showColor: false,  //颜色取值框
+      showColor: false, //颜色取值框
       code: '', //编码值
       editor: null, //定义编辑器
       randomkey: 1231234, //随机取值 生成key  一定要key 唯一,否则编辑器的数据渲染不出来
-      options: {  //编辑器属性
+      options: {
+        //编辑器属性
         selectOnLineNumbers: false,
-        readOnly: false,
-
+        readOnly: false
       },
       xmlTitle: '查看Xml',
       xmlContent: '',
@@ -273,7 +273,7 @@ export default {
       process: {
         name: this.processName,
         process_id: this.processKey,
-        description: this.processDescription,
+        description: this.processDescription
       },
       xml: '',
       svg: '',
@@ -292,7 +292,7 @@ export default {
       //缓存 报错信息
       newErrorList: [],
       errorLoading: false,
-      minMap: false,
+      minMap: false
     }
   },
   created() {
@@ -330,20 +330,20 @@ export default {
       this.addDom()
       this.canvasViewBox()
       // 点击切换 不同的icon 控制元素面板隐藏显示
-      if (document.getElementsByClassName("djs-palette-toggle")) {
-        document.getElementsByClassName("djs-palette-toggle")[0].addEventListener("click", function () {
+      if (document.getElementsByClassName('djs-palette-toggle')) {
+        document.getElementsByClassName('djs-palette-toggle')[0].addEventListener('click', function () {
           if (flag) {
-            document.getElementsByClassName("bpmn-toogle-icon")[0].classList.remove('el-icon-caret-top')
+            document.getElementsByClassName('bpmn-toogle-icon')[0].classList.remove('el-icon-caret-top')
             flag = false
-            document.getElementsByClassName("bpmn-toogle-icon")[0].classList.add('el-icon-caret-bottom')
-            document.getElementsByClassName("djs-palette")[0].style['width'] = '60px'
+            document.getElementsByClassName('bpmn-toogle-icon')[0].classList.add('el-icon-caret-bottom')
+            document.getElementsByClassName('djs-palette')[0].style['width'] = '60px'
           } else {
-            document.getElementsByClassName("bpmn-toogle-icon")[0].classList.remove('el-icon-caret-bottom')
+            document.getElementsByClassName('bpmn-toogle-icon')[0].classList.remove('el-icon-caret-bottom')
             flag = true
-            document.getElementsByClassName("bpmn-toogle-icon")[0].classList.add('el-icon-caret-top')
-            document.getElementsByClassName("djs-palette")[0].style['width'] = '130px'
+            document.getElementsByClassName('bpmn-toogle-icon')[0].classList.add('el-icon-caret-top')
+            document.getElementsByClassName('djs-palette')[0].style['width'] = '130px'
           }
-        });
+        })
       }
     })
   },
@@ -351,15 +351,15 @@ export default {
     onOpenMinMap() {
       this.minMap = !this.minMap
       if (this.minMap) {
-        this.bpmnModeler.get("minimap").open();
+        this.bpmnModeler.get('minimap').open()
       } else {
-        this.bpmnModeler.get("minimap").close();
+        this.bpmnModeler.get('minimap').close()
       }
     },
     //模拟运行
     processSimulation() {
-      this.simulationStatus = !this.simulationStatus;
-      this.bpmnModeler.get("toggleMode").toggleMode();
+      this.simulationStatus = !this.simulationStatus
+      this.bpmnModeler.get('toggleMode').toggleMode()
       //初始化工具栏
       this.adjustPalette()
     },
@@ -373,7 +373,9 @@ export default {
       let _self = this
       //获取画布的xml 抛出
       this.bpmnModeler.saveXML({ format: true }, (err, xml) => {
-        if (err) { return }
+        if (err) {
+          return
+        }
         _self.$emit('syntaxCheckClick', xml)
       })
     },
@@ -396,6 +398,9 @@ export default {
     onChange(value) {
       this.editKey++
       this.code = this.editor.getValue()
+      //编辑的时候初始化
+      this.bpmnXml = this.code
+      this.createNewDiagram()
     },
 
     onEditorMounted(editor) {
@@ -403,13 +408,15 @@ export default {
     },
     //生成随机key
     createRamdomKey() {
-      return Math.floor(Math.random() * (10, 1000000012313));
+      return Math.floor(Math.random() * (10, 1000000012313))
     },
     //获取编码数据
     onLook() {
       const vm = this
       vm.bpmnModeler.saveXML({ format: true }, (err, xml) => {
-        if (err) { return }
+        if (err) {
+          return
+        }
         vm.xmlContent = xml
         vm.code = xml
         vm.randomkey = this.createRamdomKey()
@@ -426,14 +433,14 @@ export default {
         width: 500,
         height: 500
       }
-      this.bpmnModeler.get("canvas").getAbsoluteBBox(box)
+      this.bpmnModeler.get('canvas').getAbsoluteBBox(box)
     },
     // 动态生成dom
     addDom() {
-      const canvas = this.$refs.canvas;
+      const canvas = this.$refs.canvas
       const djsPalette = canvas.children[0].children[1]
       // const djsContainer = document.getElementsByClassName('bjs-container')[0]
-      let dom = document.createElement("div");
+      let dom = document.createElement('div')
       dom.id = 'dragLeft'
       dom.style = 'position: absolute;left: 0;top: 0;width: 10px;height: 10px;background-color: #00afff;display: none'
       djsPalette.appendChild(dom)
@@ -469,10 +476,9 @@ export default {
             zoomScroll: ['value', ''],
             // // 禁止拖动线
             // bendpoints: ['value', ''],
-            translate: ["value", customTranslate(translationsCN)]
+            translate: ['value', customTranslate(translationsCN)]
           }
-        ],
-
+        ]
       })
       try {
         this.createNewDiagram()
@@ -488,7 +494,7 @@ export default {
       // console.log('111', this.bpmnModeler);
       this.processData = []
       const bpmnXmlStr = this.bpmnXml
-      // 将字符串转换成图显示出来   
+      // 将字符串转换成图显示出来
       // this.bpmnModeler.importXML(bpmnXmlStr, (err) => {
       //   if (err) {
       //     console.error(err, 'err')
@@ -502,83 +508,77 @@ export default {
       // const modeler = new BpmnJS();
 
       try {
-        const result = await this.bpmnModeler.importXML(bpmnXmlStr);
-        const { warnings } = result;
-        this.adjustPalette();
-        console.log(warnings);
+        const result = await this.bpmnModeler.importXML(bpmnXmlStr)
+        const { warnings } = result
+        this.adjustPalette()
+        console.log(warnings)
       } catch (err) {
-        console.log(err.message, '报错');
+        console.log(err.message, '报错')
       }
     },
     // 调整左侧工具栏排版
     adjustPalette() {
       try {
         // 获取 bpmn 设计器实例
-        const canvas = this.$refs.canvas;
+        const canvas = this.$refs.canvas
         //找到当前组件,更改样式
-        const djsPalette = canvas.children[0].children[1].children[10];
+        const djsPalette = canvas.children[0].children[1].children[10]
         const djsPalStyle = {
-          width: "130px",
-          padding: "5px",
-          background: "white",
-          left: "20px",
-          borderRadius: "8px"
-        };
-        for (var key in djsPalStyle) {
-          djsPalette.style[key] = djsPalStyle[key];
+          width: '130px',
+          padding: '5px',
+          background: 'white',
+          left: '20px',
+          borderRadius: '8px'
         }
-        const palette = djsPalette.children[0];
+        for (var key in djsPalStyle) {
+          djsPalette.style[key] = djsPalStyle[key]
+        }
+        const palette = djsPalette.children[0]
         //创建新icon 控制元素栏 显示隐藏
         const togglePalette = djsPalette.children[1]
-        togglePalette.style['display'] = 'block';
+        togglePalette.style['display'] = 'block'
         togglePalette.title = '显示/隐藏工具栏'
         //判断当前元素是否存在 避免创建多个
-        if (!document.getElementsByClassName("bpmn-toogle-icon")[0]) {
-          const toogleIcon = document.createElement('i');
+        if (!document.getElementsByClassName('bpmn-toogle-icon')[0]) {
+          const toogleIcon = document.createElement('i')
           toogleIcon.className = 'bpmn-toogle-icon el-icon-caret-top'
           togglePalette.appendChild(toogleIcon)
         }
-        const allGroups = palette.children;
-        allGroups[0].style["display"] = "none";
+        const allGroups = palette.children
+        allGroups[0].style['display'] = 'none'
         // 修改控件样式
         for (let gKey in allGroups) {
-          const group = allGroups[gKey];
+          const group = allGroups[gKey]
           for (let cKey in group.children) {
-            const control = group.children[cKey];
+            const control = group.children[cKey]
             const controlStyle = {
-              display: "flex",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              width: "100%",
-              padding: "5px"
-            };
-            if (
-              control.className &&
-              control.dataset &&
-              control.className.indexOf("entry") !== -1
-            ) {
-              const controlProps = this.bpmData.getControl(
-                control.dataset.action
-              );
-              control.innerHTML = `<div style='font-size: 14px;font-weight:500;margin-left:15px;'>${controlProps["title"]}</div>`;
+              display: 'flex',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              width: '100%',
+              padding: '5px'
+            }
+            if (control.className && control.dataset && control.className.indexOf('entry') !== -1) {
+              const controlProps = this.bpmData.getControl(control.dataset.action)
+              control.innerHTML = `<div style='font-size: 14px;font-weight:500;margin-left:15px;'>${controlProps['title']}</div>`
               if (controlProps['tooltip']) {
-                control.title = controlProps['tooltip'];
+                control.title = controlProps['tooltip']
               }
               //隐藏部分组件
-              if (controlProps["title"] === '中间事件') {
+              if (controlProps['title'] === '中间事件') {
                 controlStyle.display = 'none'
               }
-              if (cKey === '0' && !controlProps["title"]) {
-                allGroups[gKey].style["display"] = 'none'
+              if (cKey === '0' && !controlProps['title']) {
+                allGroups[gKey].style['display'] = 'none'
               }
               for (var csKey in controlStyle) {
-                control.style[csKey] = controlStyle[csKey];
+                control.style[csKey] = controlStyle[csKey]
               }
             }
           }
         }
       } catch (e) {
-        console.log(e);
+        console.log(e)
       }
     },
     // 实时保存
@@ -589,36 +589,42 @@ export default {
       }
       const vm = this
       vm.bpmnModeler.saveXML({ format: true }, (err, xml) => {
-        if (err) { return }
+        if (err) {
+          return
+        }
         vm.bpmnXml = xml
-        const elementRegistry = vm.bpmnModeler.get('elementRegistry');
+        const elementRegistry = vm.bpmnModeler.get('elementRegistry')
+
         vm.$emit('onSave', xml, elementRegistry, 'saveXML')
       })
       vm.bpmnModeler.saveSVG({ format: true }, (err, data) => {
-        if (err) { return }
-        const elementRegistry = vm.bpmnModeler.get('elementRegistry');
+        if (err) {
+          return
+        }
+        const elementRegistry = vm.bpmnModeler.get('elementRegistry')
+
         vm.$emit('onSave', data, elementRegistry, 'saveSVG')
       })
     },
     // 当图发生改变的时候会调用这个函数，这个data就是图的xml
     setEncoded(type, data) {
       // 把xml转换为URI，下载要用到的
-      const encodedData = encodeURIComponent(data);
+      const encodedData = encodeURIComponent(data)
       if (data) {
         if (type === 'XML') {
           // 获取到图的xml，保存就是把这个xml提交给后台
-          this.xml = data;
+          this.xml = data
           return {
             filename: this.downloadFileName + '.xml',
-            href: "data:application/bpmn20-xml;charset=UTF-8," + encodedData,
+            href: 'data:application/bpmn20-xml;charset=UTF-8,' + encodedData,
             data: data
           }
         }
         if (type === 'SVG') {
-          this.svg = data;
+          this.svg = data
           return {
             filename: this.downloadFileName + '.svg',
-            href: "data:application/text/xml;charset=UTF-8," + encodedData,
+            href: 'data:application/text/xml;charset=UTF-8,' + encodedData,
             data: data
           }
         }
@@ -630,21 +636,21 @@ export default {
         this.$message.error('请先退出模拟运行,下载xml!')
         return
       }
-      const that = this;
+      const that = this
       this.bpmnModeler.saveXML({ format: true }, function (err, xml) {
         if (err) {
-          console.error(err);
+          console.error(err)
           return
         }
-        let { filename, href } = that.setEncoded('XML', xml);
+        let { filename, href } = that.setEncoded('XML', xml)
         if (href && filename) {
-          let a = document.createElement('a');
-          a.download = filename; //指定下载的文件名
-          a.href = href; //  URL对象
-          a.click(); // 模拟点击
-          URL.revokeObjectURL(a.href); // 释放URL 对象
+          let a = document.createElement('a')
+          a.download = filename //指定下载的文件名
+          a.href = href //  URL对象
+          a.click() // 模拟点击
+          URL.revokeObjectURL(a.href) // 释放URL 对象
         }
-      });
+      })
     },
     // 下载svg
     onDownloadSvg() {
@@ -652,21 +658,21 @@ export default {
         this.$message.error('请先退出模拟运行,下载svg!')
         return
       }
-      const that = this;
+      const that = this
       this.bpmnModeler.saveSVG(function (err, svg) {
         if (err) {
-          console.error(err);
+          console.error(err)
           return
         }
-        let { filename, href } = that.setEncoded('SVG', svg);
+        let { filename, href } = that.setEncoded('SVG', svg)
         if (href && filename) {
-          let a = document.createElement('a');
-          a.download = filename;
-          a.href = href;
-          a.click();
-          URL.revokeObjectURL(a.href);
+          let a = document.createElement('a')
+          a.download = filename
+          a.href = href
+          a.click()
+          URL.revokeObjectURL(a.href)
         }
-      });
+      })
     },
     // 前进
     onHandleRedo() {
@@ -690,6 +696,9 @@ export default {
       }
       // 缩小
       if (radio === 'out') {
+        if (this.newScale - 0.2 <= 0.2) {
+          return
+        }
         this.newScale -= 0.2
       }
       // 还原为最初
@@ -717,7 +726,7 @@ export default {
       this.code = ''
       this.bpmnXml = this.bpmnXmlStr || bpmnText
       this.createNewDiagram()
-    },
+    }
     // 节点颜色设置
     // colorChange(color) {
     //   this.$refs.processNode.colorChange(color)
@@ -738,7 +747,7 @@ export default {
         })
       }
     },
-    'errorList': {
+    errorList: {
       handler(val) {
         this.newErrorList = []
         if (val.length) {

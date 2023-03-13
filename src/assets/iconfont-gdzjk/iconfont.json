@@ -1,0 +1,37 @@
+{
+  "id": "3325026",
+  "name": "国地组件库",
+  "font_family": "iconfont-gdzjk",
+  "css_prefix_text": "icon-gdzjk",
+  "description": "国地组件库公共图标",
+  "glyphs": [
+    {
+      "icon_id": "27725020",
+      "name": "最小化",
+      "font_class": "zuixiaohua",
+      "unicode": "e757",
+      "unicode_decimal": 59223
+    },
+    {
+      "icon_id": "27725021",
+      "name": "最大化",
+      "font_class": "zuidahua",
+      "unicode": "e758",
+      "unicode_decimal": 59224
+    },
+    {
+      "icon_id": "27725171",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e765",
+      "unicode_decimal": 59237
+    },
+    {
+      "icon_id": "28279657",
+      "name": "关闭-默认",
+      "font_class": "guanbi-moren",
+      "unicode": "e78d",
+      "unicode_decimal": 59277
+    }
+  ]
+}

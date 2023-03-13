@@ -2,8 +2,8 @@ const nav = require('./nav')
 const sidebar = require('./sidebar')
 const path = require('path')
 module.exports = {
-  title: '前端开发组件库',
-  base: '/vuepressblog/', // 设置站点根路径
+  title: 'GuoDi在线辅助平台',
+  base: '/gdui/', // 设置站点根路径
   locales: {
     '/': {
       lang: 'zh-CN',
@@ -18,6 +18,7 @@ module.exports = {
   shouldPrefetch: () => false,
   themeConfig: {
     logo: '/img/guodi.png',
+    search: false,
     lastUpdated: false, // string | boolean
     sidebarDepth: 3,
     nav: nav,
